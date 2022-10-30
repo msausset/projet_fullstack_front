@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     // ---------------------------------------------------------------------------------------- DIV BOTTOM VERTE
 
-    <div className="fixed bottom-0 h-20 bg-green-300 w-full shadow-2xl text-center">
+    <div className="bottom-0 left-0 right-0 h-20 bg-green-300 w-full shadow-2xl text-center">
 
       {/* ---------------------------------------------------------------------------------------- DIV 1/3 HAUTEUR POUR CENTRER TEXTE */}
 
