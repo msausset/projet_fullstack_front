@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Connexion = () => {
   return (
     <div className="p-[5vw] min-h-screen">
-      <div className="rounded-md bg-white w-1/3 min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10">
+      <div className="rounded-md bg-white w-1/3 min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10 opacity-95">
         <p className="text-lg">Bonjour !</p>
         <p className="text-sm">
           Connectez-vous pour accéder à toutes les fonctionnalités.
