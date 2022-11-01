@@ -127,7 +127,7 @@ const Accueil = () => {
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SADIO  */}
 
           <div className="row-span-2">
-            <img src={sadio} alt="" className="w-[8vw] m-auto" />
+            <img src={sadio} alt="" className="w-[15vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SADIO */}
@@ -137,7 +137,7 @@ const Accueil = () => {
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SAVIO */}
 
           <div className="row-span-2">
-            <img src={savio} alt="" className="w-[8vw] m-auto" />
+            <img src={savio} alt="" className="w-[15vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SAVIO */}
