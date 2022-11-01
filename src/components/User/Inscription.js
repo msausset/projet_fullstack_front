@@ -145,7 +145,7 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoProfil" accept=".pdf, .png, .jpg" class="hidden" />
+            <input type="file" id="photoProfil" accept=".pdf, .png, .jpg" className="hidden" />
             </div>
           </div>
 
@@ -164,7 +164,7 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoId" accept=".pdf, .png, .jpg" class="hidden" />
+            <input type="file" id="photoId" accept=".pdf, .png, .jpg" className="hidden" />
             </div>
           </div>
 

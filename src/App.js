@@ -7,6 +7,7 @@ import Inscription from "./components/User/Inscription";
 import Footer from "./components/Footer/Footer";
 import ReinitialisationMdp from "./components/User/ReinitialisationMdp";
 import ReinitialisationMdpMail from "./components/User/ReinitialisationMdpMail";
+import Deconnexion from "./components/User/Deconnexion";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
           <Route
             path="/reinitialisation-mdp-mail"
             element={<ReinitialisationMdpMail />}
+          />
+          <Route
+            path="/deconnexion"
+            element={<Deconnexion />}
           />
         </Routes>
         <Footer />

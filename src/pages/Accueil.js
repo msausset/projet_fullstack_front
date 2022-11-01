@@ -123,61 +123,61 @@ const Accueil = () => {
 
         {/* ------------------------------------------------------------------------------------------------ GRILLE 2 COLONNES SUR 3 LIGNES */}
 
-        <div class="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
+        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SADIO  */}
 
-          <div class="row-span-2">
+          <div className="row-span-2">
             <img src={sadio} alt="" className="w-[8vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SADIO */}
 
-          <div class="text-center text-2xl font-bold">Sadio</div>
+          <div className="text-center text-2xl font-bold">Sadio</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SAVIO */}
 
-          <div class="row-span-2">
+          <div className="row-span-2">
             <img src={savio} alt="" className="w-[8vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SAVIO */}
 
-          <div class="text-center text-2xl font-bold">Savio</div>
+          <div className="text-center text-2xl font-bold">Savio</div>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ FIN GRILLE PREMIERE PARTIE */}
         {/* ------------------------------------------------------------------------------------------------ GRILLE SUR 3 LIGNES ET 3 COLONNES */}
 
-        <div class="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
+        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI VIVERK  */}
 
-          <div class="row-span-2">
+          <div className="row-span-2">
             <img src={viverk} alt="" className="w-[10vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM VIVERK */}
 
-          <div class="text-center text-2xl font-bold">Viverk</div>
+          <div className="text-center text-2xl font-bold">Viverk</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI CYNTHIA */}
 
-          <div class="row-span-2">
+          <div className="row-span-2">
             <img src={cynthia} alt="" className="w-[8vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENO CYNTHIA */}
 
-          <div class="text-center text-2xl font-bold">Cynthia</div>
+          <div className="text-center text-2xl font-bold">Cynthia</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI MAXIME */}
 
-          <div class="row-span-2">
+          <div className="row-span-2">
             <img src={maxime} alt="" className="w-[9vw] m-auto" />
           </div>
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM MAXIME */}
 
-          <div class="text-center text-2xl font-bold">Maxime</div>
+          <div className="text-center text-2xl font-bold">Maxime</div>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ BORDURE POINTILLÉ */}
