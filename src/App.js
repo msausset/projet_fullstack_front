@@ -11,12 +11,20 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        {/* ------------------------------------------------------------------------------- COMPONENTS > NAVBAR > NAVBAR */}
         <Navbar />
         <Routes>
+          {/* ------------------------------------------------------------------------------- PAGES > ACCUEIL */}
           <Route path="/" element={<Accueil />} />
+          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > CONNEXION */}
           <Route path="/connexion" element={<Connexion />} />
+          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > INSCRIPTION */}
           <Route path="/inscription" element={<Inscription />} />
-          <Route path="/reinitialisation-mdp" element={<ReinitialisationMdp />} />
+          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > REINITIALISATIONMDP */}
+          <Route
+            path="/reinitialisation-mdp"
+            element={<ReinitialisationMdp />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
