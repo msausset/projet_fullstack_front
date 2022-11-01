@@ -130,7 +130,7 @@ const Inscription = () => {
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUTE PHOTO DE PROFIL MARGE BOTTOM 10 */}
+      {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO DE PROFIL MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div className="mb-2">
@@ -145,7 +145,7 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoProfil" class="hidden" />
+            <input type="file" id="photoProfil" accept=".pdf, .png, .jpg" class="hidden" />
             </div>
           </div>
 
@@ -164,7 +164,7 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoId" class="hidden" />
+            <input type="file" id="photoId" accept=".pdf, .png, .jpg" class="hidden" />
             </div>
           </div>
 

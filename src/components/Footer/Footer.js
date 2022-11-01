@@ -12,7 +12,7 @@ const Footer = () => {
 
       {/* ---------------------------------------------------------------------------------------- DIV 1/3 HAUTEUR POUR CENTRER TEXTE */}
 
-      <div className="h-1/3">© MonAnnonce - 2022</div>
+      <div className="h-1/3">© MonAnnonce / 2012 - 2022</div>
 
     {/* ---------------------------------------------------------------------------------------- DIV 1/3 HAUTEUR POUR CENTRER TEXTE */}
 
