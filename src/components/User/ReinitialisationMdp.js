@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import monkeyOops from "../../images/monkey-oops.gif";
 
 const ReinitialisationMdp = () => {
+
+  const [isClicked, setIsClicked] = useState(false)
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setIsClicked(true)
+    alert("OK !");
+  };
+
   return (
     // -------------------------------------------------------------------------------------------------------- DIV SUR TOUTE LONGUEUR ECRAN
 
@@ -21,6 +30,7 @@ const ReinitialisationMdp = () => {
         <p className="text-sm text-center">
           Mais ici, vous pourrez récupérer votre mot de passe 😇
         </p>
+        <form action="" onSubmit={handleClick}>
         <div className="mt-10 grid grid-rows-2 place-items-center">
           <p className="text-center">Entrez l'email du compte associé</p>
 
@@ -35,13 +45,14 @@ const ReinitialisationMdp = () => {
             Réinitialiser
           </button>
         </div>
+        </form>
         <div className="text-xs w-[9vw] text-right pt-2 pb-5 hover:text-blue-600 hover:underline">
           <Link to="/connexion">Retour à la connexion</Link>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------------- DIV CACHÉ A AFFICHER AU CLIC SUR BOUTON */}
 
-        <div className="mt-5 bg-green-400 hidden">
+        <div className={isClicked ? "mt-5 bg-green-400" : "mt-5 bg-green-400 hidden"}>
           <p className="text-center">
             Un email vous a été envoyé pour la réinitialisation de votre mot de
             passe.

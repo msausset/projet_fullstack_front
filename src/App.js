@@ -16,10 +16,12 @@ import ListeAnnonces from "./components/Annonces/ListeAnnonces";
 import MonProfil from "./components/Profil/MonProfil";
 import ProfilPublic from "./components/Profil/ProfilPublic";
 
+
 function App() {
   return (
     <div>
       <BrowserRouter>
+      
         {/* ------------------------------------------------------------------------------- COMPONENTS > NAVBAR > NAVBAR */}
         <Navbar />
         <Routes>
@@ -46,16 +48,20 @@ function App() {
           {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > PRODUIT */}
           <Route path="/produit/:id" element={<Produit />} />
           {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > EDITIONCREATIONANNONCE */}
-          <Route path="/edition-creation-annonce" element={<EditionCreationAnnonce />} />
+          <Route
+            path="/edition-creation-annonce"
+            element={<EditionCreationAnnonce />}
+          />
           {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > LISTEANNONCES */}
           <Route path="/liste-annonces" element={<ListeAnnonces />} />
           {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > MONPROFIL */}
           <Route path="/mon-profil" element={<MonProfil />} />
           {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > PROFILPUBLIC */}
-          <Route path="/profil-public" element={<ProfilPublic />} />
+          <Route path="/profil-public/:id" element={<ProfilPublic />} />
           <Route path="/deconnexion" element={<Deconnexion />} />
         </Routes>
         <Footer />
+        
       </BrowserRouter>
     </div>
   );
