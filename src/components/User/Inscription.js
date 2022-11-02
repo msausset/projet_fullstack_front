@@ -1,121 +1,174 @@
 import React from "react";
+import monkeyInscription from "../../images/monkey-inscription.gif";
 
 const Inscription = () => {
   return (
-    <div className="p-[5vw]">
-
+    <div className="p-[5vw] min-h-screen">
       {/* ------------------------------------------------------------------------------------------------------ DIV ARRONDIE OPACITE 95 OMBRE PORTEE */}
 
       <div className="rounded-md bg-white w-[40vw] min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10 opacity-95">
+        {/* ------------------------------------------------------------------------------------------------------- AFFICHAGE IMAGE SINGE */}
+
+        <div className="pb-5">
+          <img
+            src={monkeyInscription}
+            alt="monkeyInscription"
+            className="w-[5vw] m-auto"
+          />
+        </div>
         <p className="text-lg">Bienvenue !</p>
         <p className="text-sm">
           Inscrivez-vous pour avoir accès à toutes les fonctionnalités.
         </p>
 
-      {/* ------------------------------------------------------------------------------------------------------ GRILLE INSCRIPTION 6 LIGNES / 2 COLS */}
+        {/* ------------------------------------------------------------------------------------------------------ GRILLE INSCRIPTION 6 LIGNES / 2 COLS */}
 
         <div className="grid grid-cols-2 grid-rows-2 pt-10">
-
-      {/* ------------------------------------------------------------------------------------------------------ INPUT PRENOM MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT PRENOM MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="prenom">Prénom</label>
             </div>
             <div>
-              <input type="text" id="prenom" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="prenom"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT NOM MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT NOM MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="nom">Nom</label>
             </div>
             <div>
-              <input type="text" id="nom" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="nom"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT EMAIL MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT EMAIL MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="email">Email</label>
             </div>
             <div>
-              <input type="text" id="email" className="rounded-full w-2/3" />
+              <input
+                type="email"
+                id="email"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT TELEPHONE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT TELEPHONE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="tel">Téléphone</label>
             </div>
             <div>
-              <input type="text" id="tel" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="tel"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT ADRESSE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT ADRESSE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="adresse">Adresse</label>
             </div>
             <div>
-              <input type="text" id="adresse" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="adresse"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT CODE POSTAL MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT CODE POSTAL MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="cp">Code postal</label>
             </div>
             <div>
-              <input type="text" id="cp" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="cp"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT VILLE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT VILLE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="ville">Ville</label>
             </div>
             <div>
-              <input type="text" id="ville" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="ville"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT PAYS MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT PAYS MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="pays">Pays</label>
             </div>
             <div>
-              <input type="text" id="pays" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="pays"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT MOT DE PASSE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT MOT DE PASSE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
               <label htmlFor="mdp">Mot de passe</label>
             </div>
             <div>
-              <input type="text" id="mdp" className="rounded-full w-2/3" />
+              <input
+                type="text"
+                id="mdp"
+                className="rounded-full w-2/3"
+                required
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT CONFIMATION MOT DE PASSE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT CONFIMATION MOT DE PASSE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div>
@@ -125,16 +178,18 @@ const Inscription = () => {
               <input
                 type="text"
                 id="confirmerMdp"
-                className="rounded-full w-2/3"
+                className="rounded-full w-2/3 required"
               />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO DE PROFIL MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO DE PROFIL MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div className="mb-2">
-            <label htmlFor="photoProfil">Choisissez une photo de profil</label>
+              <label htmlFor="photoProfil">
+                Choisissez une photo de profil
+              </label>
             </div>
             <div>
               <label
@@ -145,15 +200,22 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoProfil" accept=".pdf, .png, .jpg" className="hidden" />
+              <input
+                type="file"
+                id="photoProfil"
+                accept=".pdf, .png, .jpg"
+                className="hidden"
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO IDENTITE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO IDENTITE MARGE BOTTOM 10 */}
 
           <div className="mb-10">
             <div className="mb-2">
-            <label htmlFor="photoIdentite">Choisissez une photo d'identité</label>
+              <label htmlFor="photoIdentite">
+                Choisissez une photo d'identité
+              </label>
             </div>
             <div>
               <label
@@ -164,14 +226,19 @@ const Inscription = () => {
               </label>
             </div>
             <div>
-            <input type="file" id="photoId" accept=".pdf, .png, .jpg" className="hidden" />
+              <input
+                type="file"
+                id="photoId"
+                accept=".pdf, .png, .jpg"
+                className="hidden"
+              />
             </div>
           </div>
 
-      {/* ------------------------------------------------------------------------------------------------------ BOUTON S'INSCRIRE MARGE BOTTOM 10 */}
+          {/* ------------------------------------------------------------------------------------------------------ BOUTON S'INSCRIRE MARGE BOTTOM 10 */}
 
           <div className="mb-10 col-span-2">
-            <button className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-green-600 hover:opacity-90 hover:border-green-600">
+            <button className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-green-600 hover:opacity-90 hover:border-green-600 hover:underline">
               S'inscrire
             </button>
           </div>

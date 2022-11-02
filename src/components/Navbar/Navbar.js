@@ -7,6 +7,7 @@ import deconnexion from "../../images/Deconnexion.png";
 import compte from "../../images/CompteConnexion.png";
 import connexion from "../../images/CompteConnexion.png";
 import plus from "../../images/Plus.png";
+import loupe from "../../images/loupe.png";
 
 const Navbar = () => {
   return (
@@ -58,22 +59,22 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* ---------------------------------------------------------------------------------------- ONGLET NOUVELLE ANNONCE */}
+        {/* ---------------------------------------------------------------------------------------- ONGLET RECHERCHE */}
 
         <Link
-          to="/nouvelle-annonce"
+          to="/recherche"
           className="grow border-solid border-l-2 hover:border-slate-400"
         >
           <div className="flex-wrap hover:underline hover:mt-5">
             <div className="-mt-5">
               <img
-                alt="nouvelle-annonce"
-                className="w-[2vw] h-[2vw] inline"
-                src={plus}
+                alt="annonce"
+                className="w-[1.6vw] h-[1.6vw] inline"
+                src={loupe}
               />
             </div>
             <div className="mt-5">
-              <p className="text-[1vw]">Créer une annonce</p>
+              <p className="text-[1vw]">Recherche</p>
             </div>
           </div>
         </Link>
@@ -121,7 +122,7 @@ const Navbar = () => {
         {/* ---------------------------------------------------------------------------------------- ONGLET MON COMPTE */}
 
         <Link
-          to="/mon-compte"
+          to="/mon-profil"
           className="grow border-solid border-l-2 hover:border-slate-400"
         >
           <div className="flex-wrap hover:underline hover:mt-5">

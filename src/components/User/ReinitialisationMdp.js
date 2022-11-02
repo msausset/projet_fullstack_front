@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import monkeyOops from "../../images/monkey-oops.gif";
 
 const ReinitialisationMdp = () => {
   return (
@@ -8,6 +10,11 @@ const ReinitialisationMdp = () => {
       {/* ------------------------------------------------------------------------------------------------------- DIV BOX REINITIALISATION MDP */}
 
       <div className="rounded-md bg-white w-[25vw] pt-10 m-auto">
+        {/* ------------------------------------------------------------------------------------------------------- AFFICHAGE IMAGE SINGE */}
+
+        <div className="pb-5">
+          <img src={monkeyOops} alt="monkeyOops" className="w-[5vw] m-auto" />
+        </div>
         {/* ------------------------------------------------------------------------------------------------------- TEXTE REINITIALISATION MDP */}
 
         <p className="text-lg text-center">Pas de chance ...</p>
@@ -24,9 +31,12 @@ const ReinitialisationMdp = () => {
         <div className="mt-10 pb-10 text-center">
           {/* ------------------------------------------------------------------------------------------------------- BOUTON REINITIALISATION MDP */}
 
-          <button className="h-[2vw] w-[7vw] rounded-full bg-orange-600 hover:opacity-90 ">
+          <button className="h-[2vw] w-[7vw] rounded-full bg-orange-600 hover:opacity-90 hover:underline ">
             Réinitialiser
           </button>
+        </div>
+        <div className="text-xs w-[9vw] text-right pt-2 pb-5 hover:text-blue-600 hover:underline">
+          <Link to="/connexion">Retour à la connexion</Link>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------------- DIV CACHÉ A AFFICHER AU CLIC SUR BOUTON */}

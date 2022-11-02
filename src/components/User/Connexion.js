@@ -1,10 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import monkeyHello from "../../images/monkey-hello.gif";
+
 
 const Connexion = () => {
   return (
     <div className="p-[5vw] min-h-screen">
-      <div className="rounded-md bg-white w-1/3 min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10 opacity-95">
+      <div className="rounded-md bg-white w-1/3 min-h-[20vw]  m-auto shadow-2xl text-center pt-10 opacity-95">
+
+      {/* ------------------------------------------------------------------------------------------------------- AFFICHAGE IMAGE SINGE */}
+
+      <div className="pb-5">
+      <img src={monkeyHello} alt="monkeyHello" className="w-[5vw] m-auto" />
+      </div>
         <p className="text-lg">Bonjour !</p>
         <p className="text-sm">
           Connectez-vous pour accéder à toutes les fonctionnalités.
@@ -40,10 +48,10 @@ const Connexion = () => {
             <div className="flex">
               <div className="w-[4.5vw]"></div>
             <div className="text-xs w-[9vw] text-right pt-2 hover:text-blue-600">
-              <Link to="/reinitialisation-mdp">Mot de passe oublié ?</Link>
+              <Link to="/reinitialisation-mdp" className="hover:underline">Mot de passe oublié ?</Link>
             </div>
             <div className="text-xs text-right pt-2 w-[18vw] ">
-              <span>Pas encore inscrit ? <Link to="/inscription" className="hover:text-blue-900">Inscrivez-vous</Link></span>
+              <span>Pas encore inscrit ? <Link to="/inscription" className="hover:text-blue-900 hover:underline">Inscrivez-vous</Link></span>
             </div>
             <div className="w-[5vw]"></div>
             </div>
@@ -52,7 +60,7 @@ const Connexion = () => {
         {/* ------------------------------------------------------------------------------------------------------------------------- BOUTON CONNEXION */}
 
           <div className="mb-10 col-span-2 mt-10">
-            <button className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-blue-400 hover:opacity-90">
+            <button className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-blue-400 hover:opacity-90 hover:underline">
               Se connecter
             </button>
           </div>

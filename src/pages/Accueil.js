@@ -165,7 +165,7 @@ const Accueil = () => {
             <img src={cynthia} alt="" className="w-[8vw] m-auto" />
           </div>
 
-          {/* ------------------------------------------------------------------------------------------------ PRENO CYNTHIA */}
+          {/* ------------------------------------------------------------------------------------------------ PRENOM CYNTHIA */}
 
           <div className="text-center text-2xl font-bold">Cynthia</div>
 
