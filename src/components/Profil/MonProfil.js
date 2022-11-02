@@ -67,6 +67,7 @@ const MonProfil = () => {
         {/* ---------------------------------------------------------------------------------------------------------- DIV GAUCHE FLEXBOX */}
 
         <div className="w-full rounded-r-md rounded-b-md bg-white pb-10 min-h-[20vw] m-auto text-center pt-10 opacity-95">
+            <form action="" onSubmit={handleClickAgain}>
           <div className="h-[10vw] rounded-full border border-4 border-black w-[10vw] m-auto">
             {/* ---------------------------------------------------------------------------------------------------------- DIV IMAGE PHOTO DE PROFIL ENTOURÉ BORDER */}
             <img
@@ -75,8 +76,23 @@ const MonProfil = () => {
               className="w-[9vw] m-auto"
             />
           </div>
+          <div className="pt-5">
+              <label
+                htmlFor="photoId"
+                className={isClicked ? "w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100":"w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100 hidden"}
+              >
+                Sélectionner un fichier
+              </label>
+            </div>
+            <div>
+              <input
+                type="file"
+                id="photoId"
+                accept=".pdf, .png, .jpg"
+                className="hidden"
+              />
+            </div>
 
-          <form action="" onSubmit={handleClickAgain}>
 
           {/* ---------------------------------------------------------------------------------------------------------- DIV INFORMATIONS GENERALES */}
 
@@ -101,7 +117,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setNom(e.target.value)}
-                value={nom}
+                placeholder={nom}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {nom}
@@ -126,7 +142,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setPrenom(e.target.value)}
-                value={prenom}
+                placeholder={prenom}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {prenom}
@@ -157,7 +173,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setMail(e.target.value)}
-                value={mail}
+                placeholder={mail}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {mail}
@@ -182,7 +198,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setTelephone(e.target.value)}
-                value={telephone}
+                placeholder={telephone}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {telephone}
@@ -207,7 +223,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setAdresse(e.target.value)}
-                value={adresse}
+                placeholder={adresse}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {adresse}
@@ -232,7 +248,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setCodepostal(e.target.value)}
-                value={codePostal}
+                placeholder={codePostal}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {codePostal}
@@ -257,7 +273,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setVille(e.target.value)}
-                value={ville}
+                placeholder={ville}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {ville}
@@ -282,7 +298,7 @@ const MonProfil = () => {
                     : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                 }
                 onChange={(e) => setPays(e.target.value)}
-                value={pays}
+                placeholder={pays}
               />
               <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                 {pays}
