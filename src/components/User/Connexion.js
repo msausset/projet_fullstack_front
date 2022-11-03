@@ -23,12 +23,13 @@ const Connexion = () => {
 
         //set JWT token to local
         localStorage.setItem("token", token);
+        console.log(response.data.token.token);
 
         //set token to axios common header
         /* setAuthToken(token); */
 
         //redirect user to home page
-        window.location.href = "/";
+        /* window.location.href = "/"; */
       })
       .catch((err) => console.log(err));
   }
