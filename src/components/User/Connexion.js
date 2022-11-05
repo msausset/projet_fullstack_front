@@ -31,7 +31,10 @@ const Connexion = () => {
         //redirect user to home page
         window.location.href = "/";
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("email ou mot de passe incorrect");
+      });
   };
 
   return (

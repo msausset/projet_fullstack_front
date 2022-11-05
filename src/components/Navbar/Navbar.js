@@ -10,6 +10,8 @@ import plus from "../../images/Plus.png";
 import loupe from "../../images/loupe.png";
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
+
   return (
     // ----------------------------------------------------------------------------------------- NAVBAR
 
@@ -79,65 +81,63 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* ---------------------------------------------------------------------------------------- ONGLET CONNEXION */}
+        {token ? (
+          <>
+            <Link
+              to="/deconnexion"
+              className="grow border-solid border-l-2 hover:border-slate-400"
+            >
+              <div className="flex-wrap hover:underline hover:mt-5">
+                <div className="-mt-5">
+                  <img
+                    alt="deconnexion"
+                    className="w-[2vw] h-[2vw] inline"
+                    src={deconnexion}
+                  />
+                </div>
+                <div className="mt-5">
+                  <p className="text-[1vw]">Déconnexion</p>
+                </div>
+              </div>
+            </Link>
 
-        <Link
-          to="/connexion"
-          className="grow border-solid border-l-2 hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-5">
-            <div className="-mt-5">
-              <img
-                alt="connexion"
-                className="w-[2vw] h-[2vw] inline"
-                src={connexion}
-              />
+            <Link
+              to="/mon-profil"
+              className="grow border-solid border-l-2 hover:border-slate-400"
+            >
+              <div className="flex-wrap hover:underline hover:mt-5">
+                <div className="-mt-5">
+                  <img
+                    alt="compte"
+                    className="w-[2vw] h-[2vw] inline"
+                    src={compte}
+                  />
+                </div>
+                <div className="mt-5">
+                  <p className="text-[1vw]">Mon compte</p>
+                </div>
+              </div>
+            </Link>
+          </>
+        ) : (
+          <Link
+            to="/connexion"
+            className="grow border-solid border-l-2 hover:border-slate-400"
+          >
+            <div className="flex-wrap hover:underline hover:mt-5">
+              <div className="-mt-5">
+                <img
+                  alt="connexion"
+                  className="w-[2vw] h-[2vw] inline"
+                  src={connexion}
+                />
+              </div>
+              <div className="mt-5">
+                <p className="text-[1vw]">Connexion</p>
+              </div>
             </div>
-            <div className="mt-5">
-              <p className="text-[1vw]">Connexion</p>
-            </div>
-          </div>
-        </Link>
-
-        {/* ---------------------------------------------------------------------------------------- ONGLET DECONNEXION */}
-
-        <Link
-          to="/deconnexion"
-          className="grow border-solid border-l-2 hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-5">
-            <div className="-mt-5">
-              <img
-                alt="deconnexion"
-                className="w-[2vw] h-[2vw] inline"
-                src={deconnexion}
-              />
-            </div>
-            <div className="mt-5">
-              <p className="text-[1vw]">Déconnexion</p>
-            </div>
-          </div>
-        </Link>
-
-        {/* ---------------------------------------------------------------------------------------- ONGLET MON COMPTE */}
-
-        <Link
-          to="/mon-profil"
-          className="grow border-solid border-l-2 hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-5">
-            <div className="-mt-5">
-              <img
-                alt="compte"
-                className="w-[2vw] h-[2vw] inline"
-                src={compte}
-              />
-            </div>
-            <div className="mt-5">
-              <p className="text-[1vw]">Mon compte</p>
-            </div>
-          </div>
-        </Link>
+          </Link>
+        )}
       </div>
     </nav>
   );
