@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import monkeyHello from "../../images/monkey-hello.gif";
+import axios from "axios";
+import { setAuthToken } from "../../utils/setAuthToken";
 
 const Connexion = () => {
+  const [email, setEmail] = useState("");
+  const [mdp, setMdp] = useState("");
+
   const handleClick = (e) => {
     e.preventDefault();
-    alert("OK !");
+
+    const loginPayload = {
+      email: email,
+      password: mdp,
+    };
+
+    axios
+      .post("http://127.0.0.1:3333/login", loginPayload)
+      .then((response) => {
+        //get token from response
+        const token = response.data.token.token;
+
+        //set JWT token to local
+        localStorage.setItem("token", token);
+
+        //set token to axios common header
+        setAuthToken(token);
+
+        //redirect user to home page
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("email ou mot de passe incorrect");
+      });
   };
 
   return (
@@ -33,7 +62,14 @@ const Connexion = () => {
                 <label htmlFor="email">Email</label>
               </div>
               <div>
-                <input type="text" id="email" className="rounded-full w-[22vw]" />
+
+                <input
+                  type="text"
+                  id="email"
+                  className="rounded-full w-[22vw]"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+
               </div>
             </div>
 
@@ -44,7 +80,14 @@ const Connexion = () => {
                 <label htmlFor="email">Mot de passe</label>
               </div>
               <div>
-                <input type="password" id="mdp" className="rounded-full w-[22vw]" />
+
+                <input
+                  type="password"
+                  id="mdp"
+                  className="rounded-full w-[22vw]"
+                  onChange={(e) => setMdp(e.target.value)}
+                />
+
               </div>
 
               {/* --------------------------------------------------------------------------------- DIV FLEX POUR REINITIALISATION ET INSCRIPTION SUR LA MEME LIGNE */}

@@ -9,6 +9,8 @@ import connexion from "../../images/CompteConnexion.png";
 import loupe from "../../images/loupe.png";
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
+
   return (
     // ----------------------------------------------------------------------------------------- NAVBAR
 
@@ -78,28 +80,9 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* ---------------------------------------------------------------------------------------- ONGLET CONNEXION */}
 
-        <Link
-          to="/connexion"
-          className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-[1vw]">
-            <div className="-mt-[1vw]">
-              <img
-                alt="connexion"
-                className="w-[2vw] h-[2vw] inline"
-                src={connexion}
-              />
-            </div>
-            <div className="mt-[1vw]">
-              <p className="text-[1vw]">Connexion</p>
-            </div>
-          </div>
-        </Link>
-
-        {/* ---------------------------------------------------------------------------------------- ONGLET DECONNEXION */}
-
+        {token ? (
+          <>
         <Link
           to="/deconnexion"
           className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
@@ -118,8 +101,6 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* ---------------------------------------------------------------------------------------- ONGLET MON COMPTE */}
-
         <Link
           to="/mon-profil"
           className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
@@ -135,8 +116,39 @@ const Navbar = () => {
             <div className="mt-[1vw]">
               <p className="text-[1vw]">Mon compte</p>
             </div>
+          </Link>
+          </>
+        ) : (
+        <Link
+          to="/connexion"
+          className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
+        >
+          <div className="flex-wrap hover:underline hover:mt-[1vw]">
+            <div className="-mt-[1vw]">
+              <img
+                alt="connexion"
+                className="w-[2vw] h-[2vw] inline"
+                src={connexion}
+              />
+            </div>
+            <div className="mt-[1vw]">
+              <p className="text-[1vw]">Connexion</p>
+            </div>
           </div>
         </Link>
+=======
+        {/* ---------------------------------------------------------------------------------------- ONGLET CONNEXION */}
+
+
+
+        {/* ---------------------------------------------------------------------------------------- ONGLET DECONNEXION */}
+
+
+
+        {/* ---------------------------------------------------------------------------------------- ONGLET MON COMPTE */}
+
+
+        )}
       </div>
     </nav>
   );
