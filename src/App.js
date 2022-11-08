@@ -15,13 +15,19 @@ import EditionCreationAnnonce from "./components/Annonces/EditionCreationAnnonce
 import ListeAnnonces from "./components/Annonces/ListeAnnonces";
 import MonProfil from "./components/Profil/MonProfil";
 import ProfilPublic from "./components/Profil/ProfilPublic";
-
+import { setAuthToken } from "./utils/setAuthToken";
 
 function App() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    setAuthToken(token);
+  }
+
+  /* console.log(token); */
+
   return (
     <div>
       <BrowserRouter>
-      
         {/* ------------------------------------------------------------------------------- COMPONENTS > NAVBAR > NAVBAR */}
         <Navbar />
         <Routes>
@@ -61,7 +67,6 @@ function App() {
           <Route path="/deconnexion" element={<Deconnexion />} />
         </Routes>
         <Footer />
-        
       </BrowserRouter>
     </div>
   );
