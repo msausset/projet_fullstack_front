@@ -35,14 +35,14 @@ const MonProfil = () => {
 
         {/* ---------------------------------------------------------------------------------------------------------- DIV INFORMATIONS UTILISATEUR */}
 
-        <div className="w-full rounded-r-md rounded-b-md bg-white pb-10 min-h-[20vw] m-auto text-center pt-10 opacity-95">
+        <div className="w-full bg-white pb-[1.5vw] min-h-[20vw] m-auto text-center pt-[1.5vw] opacity-95">
           <div className="mb-10">
-            <button className="border-solid border-2 h-[4vw] text-[1.5vw] font-bold w-2/3 rounded-full bg-teal-500 hover:opacity-90 hover:underline">
+            <button className="border-solid border-[0.15vw] h-[4vw] text-[1.2vw] font-bold w-[15vw] rounded-full bg-teal-500 hover:opacity-90 hover:underline">
               <Link to="/liste-annonces">Voir mes annonces</Link>
             </button>
           </div>
           <form action="" onSubmit={handleClickAgain}>
-            <div className="h-[10vw] rounded-full border border-4 border-black w-[10vw] m-auto">
+            <div className="h-[10vw] rounded-full border border-[0.3vw] border-black w-[10vw] m-auto">
               {/* ---------------------------------------------------------------------------------------------------------- DIV IMAGE PHOTO DE PROFIL ENTOURÉ BORDER */}
               <img
                 src={monkeyMonProfil}
@@ -50,13 +50,13 @@ const MonProfil = () => {
                 className="w-[9vw] m-auto"
               />
             </div>
-            <div className="pt-5">
+            <div className="pt-[1vw]">
               <label
                 htmlFor="photoId"
                 className={
                   isClicked
-                    ? "w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
-                    : "w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100 hidden"
+                    ? "w-full text-[0.7vw] text-slate-500 py-[0.4vw] px-[0.8vw] rounded-full border-0 text-[0.7vw] font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
+                    : "w-full text-[0.7vw] text-slate-500 py-[0.4vw] px-[0.8vw] rounded-full border-0 text-[0.7vw] font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100 hidden"
                 }
               >
                 Sélectionner un fichier
@@ -73,24 +73,24 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV INFORMATIONS GENERALES */}
 
-            <div className="mt-5 border border-2 border-black rounded-full w-[15vw] m-auto">
-              <span className="text-lg">Informations générales</span>
+            <div className="mt-[1vw] border border-[0.15vw] border-black rounded-full w-[15vw] m-auto">
+              <span className="text-[0.9vw]">Informations générales</span>
             </div>
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV NOM */}
 
-            <div className="mt-5 w-3/4 m-auto h-[2vw] flex border border-0 border-b border-t">
-              <div className="m-auto basis-1/2">
+            <div className="mt-[1vw] w-[30vw] m-auto h-[2vw] flex border border-0 border-b border-t">
+              <div className="m-auto basis-[15vw]">
                 <span>Nom</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ---------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setNom(e.target.value)}
                   placeholder={nom}
@@ -103,18 +103,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV PRÉNOM */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Prénom</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ----------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setPrenom(e.target.value)}
                   placeholder={prenom}
@@ -127,24 +127,24 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV COORDONNÉES */}
 
-            <div className="mt-5 border border-2 border-black rounded-full w-[15vw] m-auto">
-              <span className="text-lg">Coordonnées</span>
+            <div className="mt-[1vw] border border-[0.15vw] border-black rounded-full w-[15vw] m-auto">
+              <span className="text-[0.9vw]">Coordonnées</span>
             </div>
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV MAIL */}
 
-            <div className="mt-5 w-3/4 m-auto h-[2vw] flex border border-0 border-b border-t">
-              <div className="m-auto basis-1/2">
+            <div className="mt-[1vw] w-[30vw] m-auto h-[2vw] flex border border-0 border-b border-t">
+              <div className="m-auto basis-[15vw]">
                 <span>Mail</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ---------------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setMail(e.target.value)}
                   placeholder={mail}
@@ -157,18 +157,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV TÉLÉPHONE */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Téléphone</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ------------------------------------------------------------------------------------ INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setTelephone(e.target.value)}
                   placeholder={telephone}
@@ -181,18 +181,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV ADRESSE */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Adresse</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ----------------------------------------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setAdresse(e.target.value)}
                   placeholder={adresse}
@@ -205,18 +205,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV CODE POSTAL */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Code postal</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ------------------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setCodepostal(e.target.value)}
                   placeholder={codePostal}
@@ -229,18 +229,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV VILLE */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Ville</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* -------------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setVille(e.target.value)}
                   placeholder={ville}
@@ -253,18 +253,18 @@ const MonProfil = () => {
 
             {/* ---------------------------------------------------------------------------------------------------------- DIV PAYS */}
 
-            <div className="w-3/4 m-auto h-[2vw] flex border border-0 border-b">
-              <div className="m-auto basis-1/2">
+            <div className="w-[30vw] m-auto h-[2vw] flex border border-0 border-b">
+              <div className="m-auto basis-[15vw]">
                 <span>Pays</span>
               </div>
-              <div className="m-auto basis-1/2">
+              <div className="m-auto basis-[15vw]">
                 {/* ---------------------------------------------------------------------------------- INPUT HIDDEN A AFFICHER LORS DU CLIC SUR BOUTON "MODIFIER" */}
                 <input
                   type="text"
                   className={
                     isClicked
-                      ? "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
-                      : "border border-1 h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
+                      ? "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 focus:border-black"
+                      : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setPays(e.target.value)}
                   placeholder={pays}

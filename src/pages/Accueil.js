@@ -19,17 +19,17 @@ const Accueil = () => {
       <div className="w-[60vw] min-h-screen m-auto shadow-2xl bg-white opacity-95">
         {/* ------------------------------------------------------------------------------------------------ MESSAGE BIENVENUE */}
 
-        <p className="text-4xl text-center pt-10 mb-5 font-bold">Bienvenue !</p>
+        <p className="text-[2.5vw] text-center pt-[1.5vw] mb-[0.2vw] font-bold">Bienvenue !</p>
 
         {/* ------------------------------------------------------------------------------------------------ DEBUT PAGE ACCUEIL */}
 
-        <div className="text-2xl m-auto w-[40vw] text-center underline">
+        <div className="text-[1.5vw] m-auto w-[40vw] text-center underline">
           <p>Qui sommes-nous ?</p>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ PRESENTATION ENTREPRISE  */}
 
-        <div className="text-lg text-justify m-auto w-[40vw] mt-10">
+        <div className="text-[0.9vw] text-justify m-auto w-[40vw] mt-[1.5vw]">
           Depuis 10 ans, nous sommes spécialisés dans la mise en relation et
           l'accompagnement entre particuliers pour la vente de leurs biens !
           Pour garantir la sécurité de tous, nous proposons une assurance.
@@ -37,7 +37,7 @@ const Accueil = () => {
 
         {/* ------------------------------------------------------------------------------------------------ GRILLE 2 COLONNES */}
 
-        <div className="text-md m-auto w-[40vw] mt-10 grid grid-cols-2 grid-rows-2 items-center">
+        <div className="m-auto w-[40vw] mt-10 grid grid-cols-2 grid-rows-2 items-center">
           {/* ------------------------------------------------------------------------------------------------ LOGO ENTREPRISE */}
 
           <div>
@@ -47,7 +47,7 @@ const Accueil = () => {
           {/* ------------------------------------------------------------------------------------------------ POURQUOI METTRE ANNONCE CHEZ NOUS */}
 
           <div>
-            <p className="font-bold">
+            <p className="text-[0.8vw] font-bold">
               Pourquoi poster votre annonce chez nous ?
             </p>
           </div>
@@ -55,13 +55,13 @@ const Accueil = () => {
           {/* ------------------------------------------------------------------------------------------------ ICONE PAIEMENT */}
 
           <div>
-            <div className="pb-5 mr-10">
+            <div className="pb-[1vw] mr-[1.5vw]">
               <img alt="paiement" className="w-[2vw] ml-auto" src={paiement} />
             </div>
 
             {/* ------------------------------------------------------------------------------------------------ ICONE ASSURANCE */}
 
-            <div className="pb-5 mr-10">
+            <div className="pb-[1vw] mr-[1.5vw]">
               <img
                 alt="assurance"
                 className="w-[2vw] ml-auto"
@@ -71,7 +71,7 @@ const Accueil = () => {
 
             {/* ------------------------------------------------------------------------------------------------ ICONE PLATEFORME */}
 
-            <div className="pb-5 mr-10">
+            <div className="pb-[1vw] mr-[1.5vw]">
               <img
                 alt="plateforme"
                 className="w-[2vw] ml-auto"
@@ -81,7 +81,7 @@ const Accueil = () => {
 
             {/* ------------------------------------------------------------------------------------------------ ICONE MEDAILLE */}
 
-            <div className="pb-5 mr-10">
+            <div className="pb-[1vw] mr-[1.5vw]">
               <img alt="first" className="w-[2vw] ml-auto" src={first} />
             </div>
           </div>
@@ -89,25 +89,25 @@ const Accueil = () => {
           {/* ------------------------------------------------------------------------------------------------ 1ERE RAISON */}
 
           <div>
-            <div className="pb-7">
+            <div className="pb-[1.5vw]">
               <p>Payez en toute tranquilité</p>
             </div>
 
             {/* ------------------------------------------------------------------------------------------------ 2EME RAISON */}
 
-            <div className="pb-7">
+            <div className="pb-[1.5vw]">
               <p>Une assurance contre le vol</p>
             </div>
 
             {/* ------------------------------------------------------------------------------------------------ 3EME RAISON */}
 
-            <div className="pb-7">
+            <div className="pb-[1.5vw]">
               <p>Une plateforme professionnelle</p>
             </div>
 
             {/* ------------------------------------------------------------------------------------------------ 4EME RAISON */}
 
-            <div className="pb-7">
+            <div className="pb-[1.5vw] ">
               <p>Parce que nous sommes les meilleurs ! 😎</p>
             </div>
           </div>
@@ -115,15 +115,15 @@ const Accueil = () => {
 
         {/* ------------------------------------------------------------------------------------------------ PRESENTATION EQUIPE */}
 
-        <div className="mt-10">
-          <p className="text-center text-2xl font-bold underline">
+        <div className="mt-[1.5vw]">
+          <p className="text-center text-[1.5vw] font-bold underline">
             Notre équipe
           </p>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ GRILLE 2 COLONNES SUR 3 LIGNES */}
 
-        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
+        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-[1vw] m-auto mt-[3vw]">
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SADIO  */}
 
           <div className="row-span-2">
@@ -132,7 +132,7 @@ const Accueil = () => {
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SADIO */}
 
-          <div className="text-center text-2xl font-bold">Sadio</div>
+          <div className="text-center text-[1.3vw] font-bold">Sadio</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI SAVIO */}
 
@@ -142,13 +142,13 @@ const Accueil = () => {
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM SAVIO */}
 
-          <div className="text-center text-2xl font-bold">Savio</div>
+          <div className="text-center text-[1.3vw] font-bold">Savio</div>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ FIN GRILLE PREMIERE PARTIE */}
         {/* ------------------------------------------------------------------------------------------------ GRILLE SUR 3 LIGNES ET 3 COLONNES */}
 
-        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-4 m-auto mt-20">
+        <div className="w-[30vw] grid grid-rows-3 grid-flow-col gap-[1vw] m-auto mt-[3vw]">
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI VIVERK  */}
 
           <div className="row-span-2">
@@ -157,7 +157,7 @@ const Accueil = () => {
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM VIVERK */}
 
-          <div className="text-center text-2xl font-bold">Viverk</div>
+          <div className="text-center text-[1.3vw] font-bold">Viverk</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI CYNTHIA */}
 
@@ -167,7 +167,7 @@ const Accueil = () => {
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM CYNTHIA */}
 
-          <div className="text-center text-2xl font-bold">Cynthia</div>
+          <div className="text-center text-[1.3vw] font-bold">Cynthia</div>
 
           {/* ------------------------------------------------------------------------------------------------ 2 LIGNES POUR L'ANIMOJI MAXIME */}
 
@@ -177,23 +177,23 @@ const Accueil = () => {
 
           {/* ------------------------------------------------------------------------------------------------ PRENOM MAXIME */}
 
-          <div className="text-center text-2xl font-bold">Maxime</div>
+          <div className="text-center text-[1.3vw] font-bold">Maxime</div>
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ BORDURE POINTILLÉ */}
 
-        <div className="border-b-2 border-slate-300 border-dashed"></div>
+        <div className="border-b-[0.2vw] border-slate-300 border-dashed"></div>
 
         {/* ------------------------------------------------------------------------------------------------ DECOUVREZ ANNONCES */}
 
-        <div className="text-center mt-20 text-2xl font-bold">
+        <div className="text-center mt-[3.5vw] text-[1.2vw] font-bold">
           Découvrez nos annonces
         </div>
 
         {/* ------------------------------------------------------------------------------------------------ BOUTON DÉCOUVRIR */}
 
-        <div className="mt-20 pb-20 text-center">
-          <button className="h-[3vw] w-1/3 rounded-full bg-red-400 hover:opacity-90 ">
+        <div className="mt-[3.5vw] pb-[3.5vw] text-center">
+          <button className="h-[3vw] w-[15vw] rounded-full bg-red-400 hover:opacity-90 ">
             <Link to="/annonces">Je découvre</Link>
           </button>
         </div>

@@ -14,18 +14,18 @@ const Inscription = () => {
     <div className="p-[5vw] min-h-screen">
       {/* ------------------------------------------------------------------------------------------------------ DIV ARRONDIE OPACITE 95 OMBRE PORTEE */}
 
-      <div className="rounded-md bg-white w-[40vw] min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10 opacity-95">
+      <div className="rounded-[0.5vw] bg-white w-[40vw] min-h-[20vw] m-auto shadow-2xl text-center pt-[1.5vw] opacity-95">
         {/* ------------------------------------------------------------------------------------------------------- AFFICHAGE IMAGE SINGE */}
 
-        <div className="pb-5">
+        <div className="pb-[1vw]">
           <img
             src={monkeyInscription}
             alt="monkeyInscription"
             className="w-[5vw] m-auto"
           />
         </div>
-        <p className="text-lg">Bienvenue !</p>
-        <p className="text-sm">
+        <p className="text-[0.9vw]">Bienvenue !</p>
+        <p className="text-[0.7vw]">
           Inscrivez-vous pour avoir accès à toutes les fonctionnalités.
         </p>
 
@@ -33,9 +33,9 @@ const Inscription = () => {
 
         <form action="" onSubmit={handleClick}>
           {/* ------------------------------------------------------------------------------------------------------ GRILLE INSCRIPTION 6 LIGNES / 2 COLS */}
-          <div className="grid grid-cols-2 grid-rows-2 pt-10">
+          <div className="grid grid-cols-2 grid-rows-2 pt-[1.5vw]">
             {/* ------------------------------------------------------------------------------------------------------ INPUT PRENOM MARGE BOTTOM 10 */}
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="prenom">Prénom</label>
               </div>
@@ -43,7 +43,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="prenom"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -51,7 +51,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT NOM MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="nom">Nom</label>
               </div>
@@ -59,7 +59,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="nom"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -67,7 +67,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT EMAIL MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="email">Email</label>
               </div>
@@ -75,7 +75,7 @@ const Inscription = () => {
                 <input
                   type="email"
                   id="email"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -83,7 +83,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT TELEPHONE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="tel">Téléphone</label>
               </div>
@@ -91,7 +91,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="tel"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -99,7 +99,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT ADRESSE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="adresse">Adresse</label>
               </div>
@@ -107,7 +107,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="adresse"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -115,7 +115,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT CODE POSTAL MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="cp">Code postal</label>
               </div>
@@ -123,7 +123,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="cp"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -131,7 +131,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT VILLE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="ville">Ville</label>
               </div>
@@ -139,7 +139,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="ville"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -147,7 +147,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT PAYS MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="pays">Pays</label>
               </div>
@@ -155,7 +155,7 @@ const Inscription = () => {
                 <input
                   type="text"
                   id="pays"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -163,7 +163,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT MOT DE PASSE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="mdp">Mot de passe</label>
               </div>
@@ -171,7 +171,7 @@ const Inscription = () => {
                 <input
                   type="password"
                   id="mdp"
-                  className="rounded-full w-2/3"
+                  className="rounded-full w-[13vw]"
                   required
                 />
               </div>
@@ -179,7 +179,7 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT CONFIMATION MOT DE PASSE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
+            <div className="mb-[1.5vw]">
               <div>
                 <label htmlFor="confirmerMdp">Confirmer mot de passe</label>
               </div>
@@ -187,15 +187,15 @@ const Inscription = () => {
                 <input
                   type="password"
                   id="confirmerMdp"
-                  className="rounded-full w-2/3 required"
+                  className="rounded-full w-[13vw] required"
                 />
               </div>
             </div>
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO DE PROFIL MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
-              <div className="mb-2">
+            <div className="mb-[1.5vw]">
+              <div className="mb-[1vw]">
                 <label htmlFor="photoProfil">
                   Choisissez une photo de profil
                 </label>
@@ -203,7 +203,7 @@ const Inscription = () => {
               <div>
                 <label
                   htmlFor="photoProfil"
-                  className="w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
+                  className="w-full text-[0.8vw] text-slate-500 py-[0.5vw] px-[0.6vw] rounded-full border-0 text-[0.8vw] font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
                 >
                   Sélectionner un fichier
                 </label>
@@ -220,8 +220,8 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT PHOTO IDENTITE MARGE BOTTOM 10 */}
 
-            <div className="mb-10">
-              <div className="mb-2">
+            <div className="mb-[1.5vw]">
+              <div className="mb-[1vw]">
                 <label htmlFor="photoIdentite">
                   Choisissez une photo d'identité
                 </label>
@@ -229,7 +229,7 @@ const Inscription = () => {
               <div>
                 <label
                   htmlFor="photoId"
-                  className="w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
+                  className="w-full text-[0.8vw] text-slate-500 py-[0.5vw] px-[0.6vw] rounded-full border-0 text-[0.8vw] font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
                 >
                   Sélectionner un fichier
                 </label>
@@ -246,16 +246,16 @@ const Inscription = () => {
 
             {/* ------------------------------------------------------------------------------------------------------ INPUT SUBMIT S'INSCRIRE MARGE BOTTOM 10 */}
 
-            <div className="mb-10 col-span-2">
+            <div className="mb-[1.5vw] col-span-2">
               <input
                 type="submit"
                 value="S'inscrire"
-                className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-green-600 hover:opacity-90 hover:border-green-600 hover:underline"
+                className="border-solid border-[0.15vw] h-[2vw] w-[13vw] rounded-full bg-green-600 hover:opacity-90 hover:border-green-600 hover:underline"
               />
             </div>
           </div>
         </form>
-        <div className={isClicked ? "mt-5 bg-green-400" : "mt-5 bg-green-400 hidden"}>
+        <div className={isClicked ? "mt-[1vw] bg-green-400" : "mt-[1vw] bg-green-400 hidden"}>
           <p className="text-center">
             Votre compte a bien été créé.
           </p>
