@@ -2,10 +2,12 @@ import React from "react";
 import monkeyEdition from "../../images/monkey-edition.gif";
 
 const EditionCreationAnnonce = () => {
+
   const handleClick = (e) => {
     e.preventDefault();
     alert("Annonce modifiée !");
   };
+
   const handleClick2 = (e) => {
     e.preventDefault();
     alert("Annonce ajoutée !");
