@@ -15,7 +15,7 @@ const EditionCreationAnnonce = () => {
     <div className="p-[5vw] min-h-screen">
       {/* ------------------------------------------------------------------------------------------------------ DIV ARRONDIE OPACITE 95 OMBRE PORTEE */}
 
-      <div className="rounded-md bg-white w-[40vw] min-h-[20vw] object-center m-auto shadow-2xl text-center pt-10 opacity-95">
+      <div className="rounded-[0.5vw] bg-white w-[40vw] min-h-[20vw] object-center m-auto shadow-2xl text-center pt-[1.5vw] opacity-95">
         {/* --------------------------------------------------------------------------------------------------------------------------- IMAGE SINGE */}
 
         <div>
@@ -28,7 +28,7 @@ const EditionCreationAnnonce = () => {
 
         {/* --------------------------------------------------------------------------------------------------------------------------- DIV TEXTE  */}
 
-        <div className="mt-5 w-[25vw] m-auto">
+        <div className="mt-[1vw] w-[25vw] m-auto">
           <span>
             Voulez-vous mettre à jour ou créer une annonce ? <br /> A vous de
             choisir 😏
@@ -48,7 +48,7 @@ const EditionCreationAnnonce = () => {
                 <label htmlFor="titre">Titre</label>
               </div>
               <div>
-                <input type="text" id="titre" className="rounded-full w-2/3" />
+                <input type="text" id="titre" className="rounded-full w-[8vw]" />
               </div>
             </div>
 
@@ -59,7 +59,7 @@ const EditionCreationAnnonce = () => {
                 <label htmlFor="prix">Prix</label>
               </div>
               <div>
-                <input type="number" id="prix" className="rounded-full w-2/3" />
+                <input type="number" id="prix" className="rounded-full w-[8vw]" />
               </div>
             </div>
 
@@ -72,7 +72,7 @@ const EditionCreationAnnonce = () => {
 
               <div>
                 <select
-                  className="w-[7vw] py-3 pr-4 text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+                  className="w-[7vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
                   name="statut"
                   id="statut"
                 >
@@ -89,7 +89,7 @@ const EditionCreationAnnonce = () => {
 
             {/* --------------------------------------------------------------------------------------------------------------------------- TEXTAREA DESCRIPTION SUR 2 COLONNES   */}
 
-            <div className="mb-10 col-span-2">
+            <div className="mb-[1.5vw] col-span-2">
               <div>
                 <label htmlFor="prenom">Description</label>
               </div>
@@ -99,21 +99,21 @@ const EditionCreationAnnonce = () => {
                   id=""
                   cols="30"
                   rows="5"
-                  className="rounded-md w-3/4"
+                  className="rounded-md w-[20vw]"
                 />
               </div>
             </div>
 
             {/* --------------------------------------------------------------------------------------------------------------------------- INPUT FILE HIDDEN POUR PHOTO  */}
 
-            <div className="mb-10">
-              <div className="mb-2">
+            <div className="mb-[1.5vw">
+              <div className="mb-[0.5vw]">
                 <label htmlFor="photoProfil">Choisissez une photo</label>
               </div>
               <div>
                 <label
                   htmlFor="photoProfil"
-                  className="w-full text-sm text-slate-500 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
+                  className="w-full text-sm text-slate-500 py-[0.5vw] px-[0.5vw] rounded-full border-0 text-[0.7vw] font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100"
                 >
                   Sélectionner un fichier
                 </label>
@@ -134,11 +134,11 @@ const EditionCreationAnnonce = () => {
           <div className="flex">
             {/* --------------------------------------------------------------------------------------------------------------------------- INPUT BOUTON MISE A JOUR   */}
 
-            <div className="mb-10 grow">
+            <div className="mb-[1.5vw] grow">
               <input
                 onClick={handleClick}
                 type="submit"
-                className="border-solid border-2 h-[2vw] text-[1vw] font-bold w-2/3 rounded-full bg-red-500 hover:opacity-90 hover:underline"
+                className="border-solid border-[0.15vw] h-[2vw] text-[0.8vw] font-bold w-[8vw] rounded-full bg-red-500 hover:opacity-90 hover:underline"
                 value="Mettre à jour"
               />
 
@@ -148,7 +148,7 @@ const EditionCreationAnnonce = () => {
               <input
                 onClick={handleClick2}
                 type="submit"
-                className="border-solid border-2 h-[2vw] text-[1vw] font-bold w-2/3 rounded-full bg-yellow-500 hover:opacity-90 hover:underline"
+                className="border-solid border-[0.15vw] h-[2vw] text-[0.8vw] font-bold w-[8vw] rounded-full bg-yellow-500 hover:opacity-90 hover:underline"
                 value="Créer l'annonce"
               />
             </div>

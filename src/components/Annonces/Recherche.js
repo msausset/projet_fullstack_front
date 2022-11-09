@@ -10,7 +10,7 @@ const Recherche = () => {
       <div className="w-[60vw] min-h-screen m-auto shadow-2xl bg-white opacity-95">
         {/* ------------------------------------------------------------------------------------------ IMAGE SINGE */}
 
-        <div className="pt-10">
+        <div className="pt-[1.5vw]">
           <img
             src={monkeyRecherche}
             alt="monkeyRecherche"
@@ -20,7 +20,7 @@ const Recherche = () => {
 
         {/* ------------------------------------------------------------------------------------------ GRILLE 8 COLONNES  */}
 
-        <div className=" mr-[2vw] ml-[2vw] m-auto mt-10 relative grid grid-cols-8">
+        <div className=" mr-[2vw] ml-[2vw] m-auto mt-[1.5vw] relative grid grid-cols-8">
           {/* ------------------------------------------------------------------------------------------ BARRE DE RECHERCHE SUR 7 COLONNES */}
 
           <div className="col-span-7">
@@ -28,7 +28,7 @@ const Recherche = () => {
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3"
+              className="absolute top-0 bottom-0 h-[1.2vw] my-auto text-gray-400 left-[0.5vw]"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -46,14 +46,14 @@ const Recherche = () => {
             <input
               type="text"
               placeholder="Commencer une recherche ..."
-              className="w-full py-3 pl-12 pr-4 text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              className="w-full py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
             />
           </div>
           <div>
             {/* ------------------------------------------------------------------------------------------ SELECT RECHERCHE PAR CATEGORIE */}
 
             <select
-              className="w-[7vw] py-3 pr-4 text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              className="w-[7vw] py-[0.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               name="categorie"
               id="categorie"
             >
@@ -79,24 +79,24 @@ const Recherche = () => {
         {/* ------------------------------------------------------------------------------------------ GRILLE SUR 3 COLONNES */}
         {/* ------------------------------------------------------------------------------------------ AFFICHERA 3 RESULTATS PAR LIGNES */}
 
-        <div className="mr-[2vw] ml-[2vw] mt-10 grid grid-cols-3 gap-2">
+        <div className="mr-[2vw] ml-[2vw] mt-[1.5vw] grid grid-cols-3 gap-[0.2vw]">
           {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
 
-          <div className="mb-10 border border-black border-2 rounded-xl">
+          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
             {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
 
-            <div className="h-[10vw] m-1 border border-black border-2 text-center bg-red-600">
+            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
               <span>Photo ici</span>
             </div>
 
             {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
 
-            <div className="border border-black border-2 m-1 text-center bg-blue-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
               <span>Titre ici</span>
             </div>
             {/* ------------------------------------------------------------------------------------------ DIV BOUTON VOIR L'ANNONCE */}
 
-            <div className="border border-black border-2 m-1 text-center bg-green-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
               <button>
                 <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
               </button>
@@ -108,40 +108,40 @@ const Recherche = () => {
           {/* -------------------------------------------- MAPPER RESULTAT ET AFFICHER DANS LA DIV PRESENTE AU DESSUS OU ALORS SIMPLEMENT AFFICHER LE COMPONENT "ANNONCES" */}
           {/* -------------------------------------------- AU FINAL IL Y AURA UNE DIV, CE QU'IL Y A EN DESSOUS DE CE COMMENTAIRE EST DONC INUTILE (JUSTE POUR L'EXEMPLE)  */}
 
-          <div className="mb-10 border border-black border-2 rounded-xl">
-            <div className="h-[10vw] m-1 border border-black border-2 text-center bg-red-600">
+          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
+            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
               <span>Photo ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-blue-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
               <span>Titre ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-green-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
               <button>
                 <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
               </button>
             </div>
           </div>
-          <div className="mb-10 border border-black border-2 rounded-xl">
-            <div className="h-[10vw] m-1 border border-black border-2 text-center bg-red-600">
+          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
+            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
               <span>Photo ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-blue-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
               <span>Titre ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-green-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
               <button>
                 <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
               </button>
             </div>
           </div>
-          <div className="mb-10 border border-black border-2 rounded-xl">
-            <div className="h-[10vw] m-1 border border-black border-2 text-center bg-red-600">
+          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
+            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
               <span>Photo ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-blue-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
               <span>Titre ici</span>
             </div>
-            <div className="border border-black border-2 m-1 text-center bg-green-600">
+            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
               <button>
                 <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
               </button>
