@@ -17,3 +17,17 @@ table td {
 table td .material-symbols-rounded {
     cursor: pointer;
 }
+
+table .edit,
+table .delete {
+    border-radius: 50%;
+    padding: 5px;
+}
+
+table .edit {
+    background-color: orange;
+}
+
+table .delete {
+    background-color: red;
+}

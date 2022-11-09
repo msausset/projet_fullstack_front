@@ -23,11 +23,15 @@ export default function MesAnnonces() {
    */
   useEffect(() => {
 
-    try {
-      request.get('/admin_offer/my').then(res => setAnnonces(res.data))
-    } catch(err) {
-      console.error(err.message)
+    const getUserAnnonces = async () => {
+      try {
+        await request.get('/admin_offer/my').then(res => setAnnonces(res.data))
+      } catch(err) {
+        console.error(err.message)
+      }
     }
+
+    getUserAnnonces()
     
   }, [])
 
@@ -49,7 +53,7 @@ export default function MesAnnonces() {
   return (
     <div>
       <div className="w-[75%] bg-white m-auto my-5 p-5">
-        <div className="grid">
+        <div className="grid mb-5">
           <h1 className="text-[2em] font-bold place-self-center">Mes annonces</h1>
           <Link to='/mon-profil/creer-une-annonce' className="btn px-5 py-1 rounded-3xl text-sm place-self-center">Créer une annonce</Link>
         </div>
@@ -67,11 +71,15 @@ export default function MesAnnonces() {
             </tr>
           </thead>
           <tbody>
-            {
-              annonces.length ? annonces.map(annonce => (
-                <AnnonceRow key={annonce.id} annonce={annonce} deleteAnnonce={handleDelete} />
-              )) : '<tr></tr>'
-            }
+          {
+            annonces.length ? annonces.map(annonce => (
+              <AnnonceRow key={annonce.id} annonce={annonce} deleteAnnonce={handleDelete} />
+            )) : (
+              <tr>
+                <td colSpan="7" className="text-center py-5">Aucune annonce trouvée</td>
+              </tr>
+            )
+          }
           </tbody>
         </table>
       </div>

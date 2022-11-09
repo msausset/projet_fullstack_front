@@ -42,9 +42,9 @@ export default function AnnonceRow({ annonce, deleteAnnonce }) {
             <td className="px-2 text-sm">{ annonce.status.label }</td>
             <td className="px-2 text-center">
                 <Link to={'/mon-profil/modifier-une-annonce/' + annonce.id}>
-                    <span className="material-symbols-rounded mr-5" title="Modifier l'annonce">edit</span>
+                    <span className="material-symbols-rounded mr-5 edit" title="Modifier l'annonce">edit</span>
                 </Link>
-                <span className="material-symbols-rounded" title="Supprimer l'annonce" onClick={ () => deleteAnnonce(annonce.id) }>delete</span>
+                <span className="material-symbols-rounded delete" title="Supprimer l'annonce" onClick={ () => deleteAnnonce(annonce.id) }>delete</span>
             </td>
         </tr>
     )
