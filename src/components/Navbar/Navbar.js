@@ -80,74 +80,62 @@ const Navbar = () => {
           </div>
         </Link>
 
-
         {token ? (
           <>
-        <Link
-          to="/deconnexion"
-          className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-[1vw]">
-            <div className="-mt-[1vw]">
-              <img
-                alt="deconnexion"
-                className="w-[2vw] h-[2vw] inline"
-                src={deconnexion}
-              />
-            </div>
-            <div className="mt-[1vw]">
-              <p className="text-[1vw]">Déconnexion</p>
-            </div>
-          </div>
-        </Link>
+            <Link
+              to="/deconnexion"
+              className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
+            >
+              <div className="flex-wrap hover:underline hover:mt-[1vw]">
+                <div className="-mt-[1vw]">
+                  <img
+                    alt="deconnexion"
+                    className="w-[2vw] h-[2vw] inline"
+                    src={deconnexion}
+                  />
+                </div>
+                <div className="mt-[1vw]">
+                  <p className="text-[1vw]">Déconnexion</p>
+                </div>
+              </div>
+            </Link>
 
-        <Link
-          to="/mon-profil"
-          className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-[1vw]">
-            <div className="-mt-[1vw]">
-              <img
-                alt="compte"
-                className="w-[2vw] h-[2vw] inline"
-                src={compte}
-              />
-            </div>
-            <div className="mt-[1vw]">
-              <p className="text-[1vw]">Mon compte</p>
-            </div>
-          </Link>
+            <Link
+              to="/mon-profil"
+              className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
+            >
+              <div className="flex-wrap hover:underline hover:mt-[1vw]">
+                <div className="-mt-[1vw]">
+                  <img
+                    alt="compte"
+                    className="w-[2vw] h-[2vw] inline"
+                    src={compte}
+                  />
+                </div>
+                <div className="mt-[1vw]">
+                  <p className="text-[1vw]">Mon compte</p>
+                </div>
+              </div>
+            </Link>
           </>
         ) : (
-        <Link
-          to="/connexion"
-          className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
-        >
-          <div className="flex-wrap hover:underline hover:mt-[1vw]">
-            <div className="-mt-[1vw]">
-              <img
-                alt="connexion"
-                className="w-[2vw] h-[2vw] inline"
-                src={connexion}
-              />
+          <Link
+            to="/connexion"
+            className="grow border-solid border-l-[0.15vw] hover:border-slate-400"
+          >
+            <div className="flex-wrap hover:underline hover:mt-[1vw]">
+              <div className="-mt-[1vw]">
+                <img
+                  alt="connexion"
+                  className="w-[2vw] h-[2vw] inline"
+                  src={connexion}
+                />
+              </div>
+              <div className="mt-[1vw]">
+                <p className="text-[1vw]">Connexion</p>
+              </div>
             </div>
-            <div className="mt-[1vw]">
-              <p className="text-[1vw]">Connexion</p>
-            </div>
-          </div>
-        </Link>
-=======
-        {/* ---------------------------------------------------------------------------------------- ONGLET CONNEXION */}
-
-
-
-        {/* ---------------------------------------------------------------------------------------- ONGLET DECONNEXION */}
-
-
-
-        {/* ---------------------------------------------------------------------------------------- ONGLET MON COMPTE */}
-
-
+          </Link>
         )}
       </div>
     </nav>
