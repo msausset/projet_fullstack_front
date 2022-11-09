@@ -124,7 +124,7 @@ const Connexion = () => {
           </div>
         </form>
       </div>
-    </form>
+    </div>
   );
 };
 
