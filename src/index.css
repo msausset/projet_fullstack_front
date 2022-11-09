@@ -3,31 +3,4 @@
 @tailwind utilities;
 
 @layer components {
-/* mt pt-10 = mt-[1.5vw] 
- mt pt-5 = mt-[1vw] 
- mt pt-20 = mt-[3.5vw] 
-txt-lg --> text-[0.9vw]
-txt-4xl --> text-[2vw]
-txt-2xl --> text-[1.2vw]
-txt-md --> text-[0.8vw]
-txt-sm --> text-[0.7vw]
-border-2 --> border-[0.15vw]
-w-1/3 --> w-[15vw]
-rounded-xl --> rounded-[0.5vw]
-m-1 --> m-[0.15vw]
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    */
 }
