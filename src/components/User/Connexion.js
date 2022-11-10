@@ -62,12 +62,14 @@ const Connexion = () => {
                 <label htmlFor="email">Email</label>
               </div>
               <div>
+
                 <input
                   type="text"
                   id="email"
-                  className="rounded-full w-3/4"
+                  className="rounded-full w-[22vw]"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+
               </div>
             </div>
 
@@ -78,12 +80,14 @@ const Connexion = () => {
                 <label htmlFor="email">Mot de passe</label>
               </div>
               <div>
+
                 <input
                   type="password"
                   id="mdp"
-                  className="rounded-full w-3/4"
+                  className="rounded-full w-[22vw]"
                   onChange={(e) => setMdp(e.target.value)}
                 />
+
               </div>
 
               {/* --------------------------------------------------------------------------------- DIV FLEX POUR REINITIALISATION ET INSCRIPTION SUR LA MEME LIGNE */}
