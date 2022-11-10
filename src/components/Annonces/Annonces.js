@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import monkeyAnnonces from "../../images/monkey-annonces.gif";
-import mustang from "../../images/mustang-shelby-exemple.jpg";
+//import mustang from "../../images/mustang-shelby-exemple.jpg";
 
 const Annonces = () => {
 
