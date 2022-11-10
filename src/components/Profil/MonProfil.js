@@ -80,7 +80,7 @@ const MonProfil = () => {
         <div className="w-full bg-white pb-[1.5vw] min-h-[20vw] m-auto text-center pt-[1.5vw] opacity-95">
           <div className="mb-10">
             <button className="border-solid border-[0.15vw] h-[4vw] text-[1.2vw] font-bold w-[15vw] rounded-full bg-teal-500 hover:opacity-90 hover:underline">
-              <Link to="/liste-annonces">Voir mes annonces</Link>
+              <Link to="mes-annonces">Voir mes annonces</Link>
             </button>
           </div>
           <form action="" onSubmit={handleClickAgain}>
