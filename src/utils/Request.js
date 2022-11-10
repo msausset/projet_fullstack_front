@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-const request = axios.create({
-  baseURL: "http://127.0.0.1:3333",
-  headers: {
-    // "content-Type": "application/json",
-  },
-});
+export const getToken = () => localStorage.getItem('token') ? localStorage.getItem('token') : null
 
-export default request;
+export const request = axios.create({
+    baseURL: process.env.REACT_APP_BASE_URL,
+    headers: {
+        'Authorization' : `Bearer ${getToken()}`
+    }
+})

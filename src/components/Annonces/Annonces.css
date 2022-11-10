@@ -1,0 +1,37 @@
+.btn {
+    background-color: #A9CE9C;
+}
+
+.btn-cancel {
+    background-color: #f75f5f;
+}
+
+table,
+table tr,
+table th,
+table td {
+    border: 1px solid lightgrey;
+}
+
+table th,
+table td {
+    padding: 5px;
+}
+
+table td .material-symbols-rounded {
+    cursor: pointer;
+}
+
+table .edit,
+table .delete {
+    border-radius: 50%;
+    padding: 5px;
+}
+
+table .edit {
+    background-color: orange;
+}
+
+table .delete {
+    background-color: red;
+}
