@@ -25,6 +25,7 @@ const MonProfil = () => {
   const handleClickAgain = (e) => {
     e.preventDefault();
     setIsClicked(false);
+    console.log(prenom);
   };
 
   return (
