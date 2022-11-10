@@ -39,14 +39,14 @@ const Connexion = () => {
 
   return (
     <div className="p-[5vw] min-h-screen">
-      <div className="rounded-[0.5vw] bg-white w-[30vw] min-h-[20vw]  m-auto shadow-2xl text-center pt-[1.5vw] opacity-95">
+      <div className="rounded-md bg-white w-1/3 min-h-[20vw]  m-auto shadow-2xl text-center pt-10 opacity-95">
         {/* ------------------------------------------------------------------------------------------------------- AFFICHAGE IMAGE SINGE */}
 
-        <div className="pb-[1vw]">
+        <div className="pb-5">
           <img src={monkeyHello} alt="monkeyHello" className="w-[5vw] m-auto" />
         </div>
-        <p className="text-[0.9vw]">Bonjour !</p>
-        <p className="text-[0.7vw]">
+        <p className="text-lg">Bonjour !</p>
+        <p className="text-sm">
           Connectez-vous pour accéder à toutes les fonctionnalités.
         </p>
         {/* ------------------------------------------------------------------------------------------------------ FORMULAIRE CONNEXION   */}
@@ -54,10 +54,10 @@ const Connexion = () => {
         <form action="" onSubmit={handleClick}>
           {/* ------------------------------------------------------------------------------------------------------ GRILLE POUR LES INPUTS   */}
 
-          <div className="grid grid-cols-2 grid-rows-2 pt-[1.5vw]">
+          <div className="grid grid-cols-2 grid-rows-2 pt-10">
             {/* ------------------------------------------------------------------------------------------------------- DIV EMAIL */}
 
-            <div className="col-span-2 mb-[1.5vw]">
+            <div className="col-span-2 mb-10">
               <div>
                 <label htmlFor="email">Email</label>
               </div>
@@ -94,12 +94,12 @@ const Connexion = () => {
 
               <div className="flex">
                 <div className="w-[4.5vw]"></div>
-                <div className="text-[0.6vw] w-[9vw] text-right pt-[0.2vw] hover:text-blue-600">
+                <div className="text-xs w-[9vw] text-right pt-2 hover:text-blue-600">
                   <Link to="/reinitialisation-mdp" className="hover:underline">
                     Mot de passe oublié ?
                   </Link>
                 </div>
-                <div className="text-[0.6vw] text-right pt-[0.2vw] w-[18vw] ">
+                <div className="text-xs text-right pt-2 w-[18vw] ">
                   <span>
                     Pas encore inscrit ?
                     <Link
@@ -116,8 +116,8 @@ const Connexion = () => {
 
             {/* ------------------------------------------------------------------------------------------------------------------------- BOUTON CONNEXION */}
 
-            <div className="mb-[1.5vw] col-span-2 mt-[1.5vw]">
-              <button className="border-solid border-[0.15vw] h-[2vw] w-[10vw] rounded-full bg-blue-400 hover:opacity-90 hover:underline">
+            <div className="mb-10 col-span-2 mt-10">
+              <button className="border-solid border-2 h-[2vw] w-1/3 rounded-full bg-blue-400 hover:opacity-90 hover:underline">
                 Se connecter
               </button>
             </div>

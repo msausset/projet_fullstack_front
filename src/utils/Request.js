@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const getToken = () =>
   localStorage.getItem("token") ? localStorage.getItem("token") : null;
@@ -10,3 +10,4 @@ export const request = axios.create({
     Authorization: `Bearer ${getToken()}`,
   },
 });
+
