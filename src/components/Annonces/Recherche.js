@@ -162,7 +162,7 @@ const Recherche = () => {
             : "Pas de résultat"}
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 

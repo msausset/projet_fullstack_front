@@ -17,22 +17,22 @@ const Annonces = () => {
   return (
     <div>
       <div className="w-[60vw] min-h-screen m-auto shadow-2xl bg-white opacity-95">
-        <div className="pt-10">
+        <div className="pt-[1.5vw]">
           <img
             src={monkeyAnnonces}
             alt="monkeyAnnonces"
             className="w-[10vw] m-auto"
           />
         </div>
-        <div className="text-center text-md mt-5">
-          <span className="">
+        <div className="text-center text-[0.8vw] mt-[1vw]">
+          <span>
             Vous allez trouver votre bonheur, c'est sûr !
           </span>
         </div>
         {/* ------------------------------------------------------------------------------------------ GRILLE SUR 3 COLONNES */}
         {/* ------------------------------------------------------------------------------------------ AFFICHERA 3 RESULTATS PAR LIGNES */}
 
-        <div className="mr-[2vw] ml-[2vw] pt-10 grid grid-cols-3 gap-2 ">
+        <div className="mr-[2vw] ml-[2vw] pt-[1.5vw] grid grid-cols-3 gap-[0.2vw] ">
           {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
 
           {datas.map((post) => {
