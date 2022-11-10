@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { request } from "../../utils/Request";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
+import image_not_found from '../../images/image-not-found.png';
+
 const Recherche = () => {
   const [datas, setDatas] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,6 +37,19 @@ const Recherche = () => {
       console.log(err.message);
     }
   }, [searchTerm]);
+
+  /**
+   * Affichage de l'image du produit
+   * @param {string} file_name 
+   * @returns L'image du produit ou une image par défaut
+   */
+  const getProductPicture = file_name => {
+    if(file_name !== '' && file_name !== undefined && file_name !== null) {
+        return <img src={'http://localhost:3333/uploads/' + encodeURI(file_name)} alt='Produit' className="h-[10vw] mx-auto" />
+    } else {
+        return <img src={image_not_found} alt='Produit' className="h-[10vw] mx-auto" />
+    }
+  }
 
   /**
    * Mise en forme des différentes catégories pour le <select>
@@ -145,7 +160,7 @@ const Recherche = () => {
                         key={post.id}
                       >
                         <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-                          {post.product_picture}
+                          { getProductPicture(post.product_picture) }
                         </div>
 
                         <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">

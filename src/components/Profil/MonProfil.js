@@ -3,6 +3,8 @@ import monkeyMonProfil from "../../images/monkey-mon-profil.gif";
 import { Link } from "react-router-dom";
 import { request } from "../../utils/Request";
 
+import image_not_found from '../../images/image-not-found.png';
+
 const MonProfil = () => {
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -13,6 +15,12 @@ const MonProfil = () => {
   const [codePostal, setCodepostal] = useState("");
   const [pays, setPays] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+  
+  // Récupère le fichier
+  const [ profilePictureFile, setProfilePictureFile ] = useState('')
+
+  // Récupère l'image du produit (retourne une balise <img>)
+  const [ profilePicture, setProfilePicture ] = useState('')
 
   const [id, setId] = useState("");
 
@@ -29,6 +37,13 @@ const MonProfil = () => {
       setCodepostal(response.data.zip_code);
       setPays(response.data.country);
 
+      if(response.data.profile_picture !== '' && response.data.profile_picture !== undefined && response.data.profile_picture !== null) {
+        setProfilePictureFile(response.data.profile_picture)
+        setProfilePicture(<img src={'http://localhost:3333/uploads/' + encodeURI(response.data.profile_picture)} alt='Photo de profil' className="w-[9vw] m-auto" />)
+      } else {
+        setProfilePicture(<img src={image_not_found} alt='Photo de profil' className="w-[9vw] m-auto" />)
+      }
+
       setId(response.data.id);
     });
   }, [isClicked]);
@@ -43,7 +58,7 @@ const MonProfil = () => {
   // FONCTION DE SOUMISSION DE FORMULAIRE
 
   const handleClickAgain = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     var bodyFormData = new FormData();
 
@@ -55,9 +70,14 @@ const MonProfil = () => {
     bodyFormData.append("zip_code", codePostal);
     bodyFormData.append("city", ville);
     bodyFormData.append("country", pays);
+    bodyFormData.append('profile_picture', profilePictureFile)
 
     request
-      .put("/user/" + id, bodyFormData)
+      .put("/user/" + id, bodyFormData, {
+          headers: {
+              'Content-Type' : 'multipart/form-data'
+          }
+      })
       .then((response) => {
         console.log("update response", response);
         // alert("modification validé");
@@ -87,11 +107,7 @@ const MonProfil = () => {
           <form action="" onSubmit={handleClickAgain}>
             <div className="h-[10vw] rounded-full border border-[0.3vw] border-black w-[10vw] m-auto">
               {/* ---------------------------------------------------------------------------------------------------------- DIV IMAGE PHOTO DE PROFIL ENTOURÉ BORDER */}
-              <img
-                src={monkeyMonProfil}
-                alt="monkeyMonProfil"
-                className="w-[9vw] m-auto"
-              />
+              { profilePicture }
             </div>
             <div className="pt-[1vw]">
               <label
@@ -111,6 +127,7 @@ const MonProfil = () => {
                 id="photoId"
                 accept=".pdf, .png, .jpg"
                 className="hidden"
+                onChange={e => setProfilePictureFile(e.target.files[0])}
               />
             </div>
 
