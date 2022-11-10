@@ -126,11 +126,13 @@ const Produit = () => {
 <div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
               <span>
                 Posté par :
+                {console.log(datas.Author)}
                 <Link
-                  to={Object.keys(datas).length > 0 && datas.Author.id ? `/users/u/${datas.Author.id}` : '/'}
+                  to={datas.Author !== undefined ? `/users/u/${datas.Author.id}` : '/'}
                   className="hover:text-blue-900 hover:underline"
                   >
-                  {Object.keys(datas).length > 0 && datas.Author.firstname+" "+ datas.Author.lastname}
+        
+                  {datas.Author !== undefined ? datas.Author.firstname+" "+ datas.Author.lastname : 'Auteur inconnu'}
                 </Link>
               </span>
             </div>
