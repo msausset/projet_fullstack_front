@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import monkeyAnnonces from "../../images/monkey-annonces.gif";
 import { request } from "../../utils/Request";
 
-//import mustang from "../../images/mustang-shelby-exemple.jpg";
+import image_not_found from '../../images/image-not-found.png';
 
 const Annonces = () => {
   const [datas, setDatas] = useState([]);
@@ -14,6 +14,19 @@ const Annonces = () => {
       .get("http://127.0.0.1:3333/search?key=&category=&status_id=2")
       .then((response) => setDatas(response.data));
   }, []);
+
+  /**
+   * Affichage de l'image du produit
+   * @param {string} file_name 
+   * @returns L'image du produit ou une image par défaut
+   */
+  const getProductPicture = file_name => {
+    if(file_name !== '' && file_name !== undefined && file_name !== null) {
+        return <img src={'http://localhost:3333/uploads/' + encodeURI(file_name)} alt='Produit' className="h-[10vw] mx-auto" />
+    } else {
+        return <img src={image_not_found} alt='Produit' className="h-[10vw] mx-auto" />
+    }
+  }
 
   return (
     <div>
@@ -45,7 +58,7 @@ const Annonces = () => {
 
                   <div className="h-[10vw] m-1 text-center">
                     {/*<img src={mustang} className="w-full h-[10vw]" alt="mustang" />*/}
-                    {post.product_picture}
+                      { getProductPicture(post.product_picture) }
                   </div>
 
                   {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
