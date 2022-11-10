@@ -9,6 +9,21 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
 
     const [ categories, setCategories ] = useState([])
 
+    const status = [
+        {
+            'id' : 1,
+            'label' : 'Brouillon'
+        },
+        {
+            'id' : 2,
+            'label' : 'Publié'
+        },
+        {
+            'id' : 3,
+            'label' : 'Supprimé'
+        }
+    ]
+
     const [ title, setTitle ] = useState('')
     const [ description, setDescription ] = useState('')
     const [ price, setPrice ] = useState()
@@ -58,6 +73,18 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
         return categories.map(cat => {
             return(
                 <option key={cat.machine_name} value={cat.machine_name}>{cat.label}</option>
+            )
+        })
+    }
+    
+    /**
+     * Mise en forme des différents statuts pour le <select>
+     * @returns Une option pour chaque statut
+     */
+    const getStatusOptions = () => {
+        return status.map(s => {
+            return(
+                <option key={s.id} value={s.id}>{s.label}</option>
             )
         })
     }
@@ -153,7 +180,7 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
                         value={statusId}
                         onChange={e => setStatusId(e.target.value)}
                     >
-                        <option key='2' value='2'>Publié</option>
+                        { getStatusOptions() }
                     </select>
                 </div>
                 <div className="flex flex-row justify-around mb-5">
