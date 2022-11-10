@@ -58,7 +58,6 @@ const MonProfil = () => {
   // FONCTION DE SOUMISSION DE FORMULAIRE
 
   const handleClickAgain = (e) => {
-    e.preventDefault();
 
     var bodyFormData = new FormData();
 

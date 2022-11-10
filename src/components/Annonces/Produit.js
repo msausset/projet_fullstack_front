@@ -10,6 +10,7 @@ import { request } from "../../utils/Request";
 const Produit = () => {
   
   const { id } = useParams();
+  
   console.log(id);
   
   const [datas, setDatas] = useState([]);
@@ -116,7 +117,7 @@ const Produit = () => {
 <div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
               <span className="text-[2vw] bg-yellow-200">
                 {/* 25.999€ */}
-                { datas.price}
+                {datas.price}€
                 </span>
             </div>
 
@@ -126,7 +127,7 @@ const Produit = () => {
               <span>
                 Posté par :
                 <Link
-                  to="/profil-public/:id"
+                  to={Object.keys(datas).length > 0 && datas.Author.id ? `/users/u/${datas.Author.id}` : '/'}
                   className="hover:text-blue-900 hover:underline"
                   >
                   {Object.keys(datas).length > 0 && datas.Author.firstname+" "+ datas.Author.lastname}
