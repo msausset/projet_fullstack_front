@@ -68,6 +68,7 @@ const MonProfil = () => {
       });
 
     setIsClicked(false);
+    console.log(prenom);
   };
 
   return (
