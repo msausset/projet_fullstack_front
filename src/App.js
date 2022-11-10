@@ -43,6 +43,8 @@ function App() {
               <Route path='formulaire-de-reinitialisation' element={<ReinitialisationMdpMail />} />
             </Route>
 
+            <Route path='recherche' element={<Recherche />} />
+
             <Route path='users'>
               <Route path='u/:id' element={<ProfilPublic />} />
             </Route>
