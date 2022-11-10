@@ -12,6 +12,7 @@ import Recherche from "./components/Annonces/Recherche";
 import Produit from "./components/Annonces/Produit";
 import Annonces from "./components/Annonces/Annonces";
 import AddAnnonce from "./components/Annonces/AddAnnonce";
+import EditAnnonce from "./components/Annonces/EditAnnonce";
 import EditionCreationAnnonce from "./components/Annonces/EditionCreationAnnonce";
 import MesAnnonces from "./components/Annonces/MesAnnonces";
 import MonProfil from "./components/Profil/MonProfil";
@@ -46,7 +47,7 @@ function App() {
               <Route index element={<MonProfil />} />
               <Route path='mes-annonces' element={<MesAnnonces />} />
               <Route path='creer-une-annonce' element={<AddAnnonce />} />
-              <Route path='modifier-une-annonce/:id' element={<AddAnnonce />} />
+              <Route path='modifier-une-annonce/:id' element={<EditAnnonce />} />
             </Route>
 
             <Route path='annonces'>

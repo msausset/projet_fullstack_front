@@ -12,13 +12,12 @@ export default function AddAnnonce() {
         console.log(annonce)
         request.post('/admin_offer/', annonce).then(response => {
             console.log('create response ', response)
-            navigate('/liste-annonces')
+            navigate('/mon-profil/mes-annonces')
         })
     }
 
     return (
-        <div className="container my-5">
-            <h1>Créer une nouvelle annonce</h1>
+        <div className="w-[75%] bg-white m-auto my-5 p-5">
             <AnnonceForm action="Ajouter" onFormSubmit={createAnnonce} />
         </div>
     )

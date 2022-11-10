@@ -1,80 +1,140 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { request } from "../../utils/Request";
+
+import image_not_found from '../../images/image-not-found.png';
+
 export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
+
+    const [ categories, setCategories ] = useState([])
 
     const [ title, setTitle ] = useState('')
     const [ description, setDescription ] = useState('')
-    const [ price, setPrice ] = useState(0)
+    const [ price, setPrice ] = useState('')
     const [ category, setCategory ] = useState('')
-    const [ statusId, setStatusId ] = useState(0)
+    const [ statusId, setStatusId ] = useState(2)
     const [ productPicture, setProductPicture ] = useState('')
 
     useEffect(() => {
 
-        setTitle(annonce.title)
-        setDescription(annonce.description)
-        setPrice(annonce.price)
-        setCategory(annonce.category)
-        setStatusId(annonce.status_id)
-        setProductPicture(annonce.product_picture)
+        try {
+            request.get('/offers-categories/').then(res => setCategories(res.data))
+        } catch(err) {
+            console.log(err.message)
+        }
+        
+        if(annonce) {
+            setTitle(annonce.title)
+            setDescription(annonce.description)
+            setPrice(annonce.price)
+            setCategory(annonce.category)
+            setStatusId(annonce.status_id ?? 2)
+            setProductPicture(annonce.product_picture)
+        }
 
     }, [ annonce ])
+
+    const getCategoryOptions = () => {
+        return categories.map(cat => {
+            return(
+                <option key={cat.machine_name} value={cat.machine_name}>{cat.label}</option>
+            )
+        })
+    }
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
 
-        onFormSubmit({ title, description, price, category, statusId, productPicture })
+        onFormSubmit({ 
+            'title': title,
+            'description': description,
+            'price': price,
+            'category': category,
+            'status_id': statusId,
+            'product_picture': productPicture
+        })
     }
 
     return (
-        <form onSubmit={handleFormSubmit} className='w-25 mx-auto my-4'>
-            <div>
-                <div className="col-sm d-flex flex-column align-items-start mb-3">
-                    <label htmlFor="todo" className="fw-light">Libellé de la tâche</label>
-                    <input type="text" id="todo" className='w-100 ps-2' />
-                </div>
-            </div>
-            <div>
-                <div className="col-sm d-flex flex-column align-items-start mb-3">
-                    <label htmlFor="priority" className="fw-light">Priorité</label>
+        <>
+            <h1 className="text-[2em] font-bold text-center mb-10">{ action === 'Ajouter' ? 'Créer une nouvelle annonce' : 'Modifier une annonce' }</h1>
+            <form onSubmit={handleFormSubmit} className='w-[50%] mx-auto'>
+                <div className="flex flex-col my-10">
+                    {
+                        productPicture ? <img src={productPicture} alt='Product picture' /> : <img src={image_not_found} alt='Image not found' className="w-[200px] mx-auto" />
+                    }
 
-                    <select id="priority" className='w-100 ps-1 py-1'>
-                        <option value='HIGH'>HIGH</option>
-                        <option value='MEDIUM'>MEDIUM</option>
-                        <option value='LOW'>LOW</option>
+                    <input
+                        type="file"
+                        className="mt-5 mx-auto"
+                        required={true}
+                        onChange={e => setProductPicture(e.target.files[0])}
+                    />
+                </div>
+                <div className="flex flex-col mb-5">
+                    <label htmlFor="title">Titre <span className="font-bold text-red-600">*</span></label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="ex : Maison de poupée Barbie"
+                        className="py-1"
+                        required={true}
+                        defaultValue={title}
+                        onChange={e => setTitle(e.target.value)}
+                    />
+                </div>
+                <div className="flex flex-col mb-5">
+                    <label htmlFor="description">Description <span className="font-bold text-red-600">*</span></label>
+                    <textarea
+                        id="description"
+                        placeholder="ex : Maison de poupée Barbie à deux étages en bon état. Livrée avec Barbie et Ken."
+                        className="py-1"
+                        required={true}
+                        defaultValue={description}
+                        onChange={e => setDescription(e.target.value)}
+                    ></textarea>
+                </div>
+                <div className="flex flex-col mb-5">
+                    <label htmlFor="price">Prix (€) <span className="font-bold text-red-600">*</span></label>
+                    <input
+                        type="text"
+                        id="price"
+                        placeholder="ex : 35,95"
+                        className="py-1"
+                        required={true}
+                        defaultValue={price}
+                        onChange={e => setPrice(e.target.value)}
+                    />
+                </div>
+                <div className="flex flex-col mb-5">
+                    <label htmlFor="category">Catégorie <span className="font-bold text-red-600">*</span></label>
+                    <select
+                        id="category"
+                        required={true}
+                        value={category}
+                        onChange={e => setCategory(e.target.value)}
+                    >
+                        { getCategoryOptions() }
                     </select>
                 </div>
-            </div>
-            <div>
-                <div className="col-sm d-flex flex-column align-items-start mb-3">
-                    <label htmlFor="category" className="fw-light">Catégorie</label>
-
-                    <select id="category" className='w-100 ps-1 py-1'>
-                        <option value='LEARNING'>LEARNING</option>
-                        <option value='HOME'>HOME</option>
-                        <option value='WORK'>WORK</option>
+                <div className="flex flex-col mb-12">
+                    <label htmlFor="status_id">Statut de l'annonce <span className="font-bold text-red-600">*</span></label>
+                    <select
+                        id="status_id"
+                        required={true}
+                        value={statusId}
+                        onChange={e => setStatusId(e.target.value)}
+                    >
+                        <option key='2' value='2'>Publié</option>
                     </select>
                 </div>
-            </div>
-            <div>
-                <div className="col-sm d-flex flex-column align-items-start mb-4">
-                    <label htmlFor="status" className="fw-light">Statut</label>
-
-                    <select id="status" className='w-100 ps-1 py-1'>
-                        <option value='TO DO'>TO DO</option>
-                        <option value='IN PROGRESS'>IN PROGRESS</option>
-                        <option value='DONE'>DONE</option>
-                    </select>
+                <div className="flex flex-row justify-around mb-5">
+                    <button className="btn px-5 py-1 rounded-3xl text-sm place-self-center">{action}</button>
+                    <Link to='/mon-profil/mes-annonces' className="btn-cancel px-5 py-1 rounded-3xl text-sm place-self-center">Annuler</Link>
                 </div>
-            </div>
-            <div>
-                <div className="d-flex justify-content-around">
-                    <Link to='/taches' className="btn btn-primary">Retour</Link>
-                    <button className="btn btn-success">{action}</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </>
     )
 
 }

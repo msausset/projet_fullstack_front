@@ -40,49 +40,51 @@ export default function MesAnnonces() {
    * @param {int} id 
    */
   const handleDelete = id => {
-    try {
-      request.delete('/admin_offer/' + id).then(res => {
-        alert('Annonce supprimée')
-        navigate('/mon-profil/mes-annonces')
-      })
-    } catch(err) {
-      console.error(err.message)
+    const message = window.confirm("Êtes-vous sûr(e) de vouloir supprimer cette annonce ?")
+
+    if(message) {
+      try {
+        request.delete('/admin_offer/' + id).then(res => {
+          alert('Annonce supprimée')
+          navigate('/mon-profil/mes-annonces')
+        })
+      } catch(err) {
+        console.error(err.message)
+      }
     }
   }
 
   return (
-    <div>
-      <div className="w-[75%] bg-white m-auto my-5 p-5">
-        <div className="grid mb-5">
-          <h1 className="text-[2em] font-bold place-self-center">Mes annonces</h1>
-          <Link to='/mon-profil/creer-une-annonce' className="btn px-5 py-1 rounded-3xl text-sm place-self-center">Créer une annonce</Link>
-        </div>
-        
-        <table className="table-fixed w-full mt-5">
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Catégorie</th>
-              <th>Titre</th>
-              <th>Description</th>
-              <th>Prix</th>
-              <th>Statut</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-          {
-            annonces.length ? annonces.map(annonce => (
-              <AnnonceRow key={annonce.id} annonce={annonce} deleteAnnonce={handleDelete} />
-            )) : (
-              <tr>
-                <td colSpan="7" className="text-center py-5">Aucune annonce trouvée</td>
-              </tr>
-            )
-          }
-          </tbody>
-        </table>
+    <div className="w-[75%] bg-white m-auto my-5 p-5">
+      <div className="grid mb-10">
+        <h1 className="text-[2em] font-bold place-self-center">Mes annonces</h1>
+        <Link to='/mon-profil/creer-une-annonce' className="btn px-5 py-1 rounded-3xl text-sm place-self-center">Créer une annonce</Link>
       </div>
+      
+      <table className="table-fixed w-full">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Catégorie</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {
+          annonces.length ? annonces.map(annonce => (
+            <AnnonceRow key={annonce.id} annonce={annonce} deleteAnnonce={handleDelete} />
+          )) : (
+            <tr>
+              <td colSpan="7" className="text-center py-5">Aucune annonce trouvée</td>
+            </tr>
+          )
+        }
+        </tbody>
+      </table>
     </div>
   );
 };
