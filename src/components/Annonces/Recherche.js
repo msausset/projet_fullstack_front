@@ -43,7 +43,7 @@ const Recherche = () => {
    * @param {string} file_name 
    * @returns L'image du produit ou une image par défaut
    */
-    const getProductPicture = file_name => {
+  const getProductPicture = file_name => {
     if(file_name !== '' && file_name !== undefined && file_name !== null) {
         return <img src={'http://localhost:3333/uploads/' + encodeURI(file_name)} alt='Produit' className="h-[10vw] mx-auto" />
     } else {
