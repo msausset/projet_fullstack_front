@@ -95,7 +95,7 @@ const Connexion = () => {
               <div className="flex">
                 <div className="w-[4.5vw]"></div>
                 <div className="text-xs w-[9vw] text-right pt-2 hover:text-blue-600">
-                  <Link to="/reinitialisation-mdp" className="hover:underline">
+                  <Link to="/mot-de-passe" className="hover:underline">
                     Mot de passe oublié ?
                   </Link>
                 </div>

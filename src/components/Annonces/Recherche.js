@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {request} from "../../utils/Request";
+import { request } from "../../utils/Request";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
 const Recherche = () => {
@@ -10,44 +10,45 @@ const Recherche = () => {
   const [searchCategory, setSearchCategory] = useState("");
   const [categories, setCategories] = useState([]);
 
-
-
   const handleSearchTerm = (e) => {
     let value = e.target.value;
     setSearchTerm(value);
- 
-    request.get("/search?key=" + searchTerm + "&category=")
-    .then(response => setDatas(response.data))
-    
+
+    request
+      .get("/search?key=" + searchTerm + "&category=")
+      .then((response) => setDatas(response.data));
   };
 
   const handleSearchByTermAndCat = (e) => {
     e.preventDefault();
-    request.get("/search?key=" + searchTerm + "&category=" + searchCategory)
-    .then(response => setDatas(response.data))
-    console.log(searchTerm, searchCategory)
-  }
+    request
+      .get("/search?key=" + searchTerm + "&category=" + searchCategory)
+      .then((response) => setDatas(response.data));
+    console.log(searchTerm, searchCategory);
+  };
 
   useEffect(() => {
-    setDatas([])
+    setDatas([]);
     try {
-      request.get('/offers-categories/').then(res => setCategories(res.data))
-    } catch(err) {
-        console.log(err.message)
-      }
+      request.get("/offers-categories/").then((res) => setCategories(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
   }, [searchTerm]);
 
-   /**
-     * Mise en forme des différentes catégories pour le <select>
-     * @returns Une option pour chaque catégorie
-     */
-    const getCategoryOptions = () => {
-      return categories.map(cat => {
-          return(
-              <option key={cat.machine_name} value={cat.machine_name}>{cat.label}</option>
-          )
-      })
-  }
+  /**
+   * Mise en forme des différentes catégories pour le <select>
+   * @returns Une option pour chaque catégorie
+   */
+  const getCategoryOptions = () => {
+    return categories.map((cat) => {
+      return (
+        <option key={cat.machine_name} value={cat.machine_name}>
+          {cat.label}
+        </option>
+      );
+    });
+  };
 
   return (
     <div>
@@ -102,24 +103,25 @@ const Recherche = () => {
             <select
               className="w-[7vw] py-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               name="categorie"
-              id="categorie" 
+              id="categorie"
               value={searchCategory}
-              onChange={e => setSearchCategory(e.target.value)}
+              onChange={(e) => setSearchCategory(e.target.value)}
             >
               {/* ------------------------------------------------------------------------------------------ REMPLACER LES EXEMPLES PAR LES CATEGORIES DANS LA BDD */}
               {/* ------------------------------------------------------------------------------------------ MAPPER CATEGORIE BDD ET AFFICHER OPTION  */}
 
-            {getCategoryOptions()}
-            
+              {getCategoryOptions()}
             </select>
           </div>
-
         </div>
 
         {/* ------------------------------------------------------------------------------------------ BOUTON RECHERCHER */}
 
         <div className="text-center mt-[3vw]">
-          <button onClick={handleSearchByTermAndCat} className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline">
+          <button
+            onClick={handleSearchByTermAndCat}
+            className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline"
+          >
             Rechercher
           </button>
         </div>
@@ -136,33 +138,35 @@ const Recherche = () => {
                   return val.title.includes(searchTerm);
                 })
                 .map((post) => {
-                  return (
-                    <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]" key={post.id}>
+                  if (post.status_id === 2) {
+                    return (
                       <div
-                        className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-                        {post.product_picture}
-                      </div>
+                        className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]"
+                        key={post.id}
+                      >
+                        <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
+                          {post.product_picture}
+                        </div>
 
-                      <div
-                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-                        {post.title}
-                      </div>
+                        <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
+                          {post.title}
+                        </div>
 
-                      <div
-                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-                        <button>
-                          <Link to={"produit/:id" + post.id}>
-                            Voir l'annonce
-                          </Link>
-                        </button>
+                        <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
+                          <button>
+                            <Link to={"/annonces/a/" + post.id}>
+                              Voir l'annonce
+                            </Link>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
+                    );
+                  }
                 })
             : "Pas de résultat"}
         </div>
       </div>
-    </div> 
+    </div>
   );
 };
 
