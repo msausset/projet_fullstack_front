@@ -1,8 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
 const Recherche = () => {
+
+  const [datas, setDatas] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:3333/search?key=&category=OTHER_FURNITURE')
+      .then(response => response.json())
+      .then((json) => setDatas(json));
+  }, []);
+
+  const handleSearchTerm = (e) => {
+    let value = e.target.value;
+    setSearchTerm(value);
+  };
+
+  console.log(searchTerm);
+
   return (
     <div>
       {/* ------------------------------------------------------------------------------------------ DIV HAUTEUR ECRAN OPACITE 95 */}
@@ -45,8 +63,9 @@ const Recherche = () => {
 
             <input
               type="text"
-              placeholder="Commencer une recherche ..."
+              placeholder="Rechercher ..."
               className="w-full py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              onChange={handleSearchTerm}
             />
           </div>
           <div>
@@ -81,75 +100,47 @@ const Recherche = () => {
 
         <div className="mr-[2vw] ml-[2vw] mt-[1.5vw] grid grid-cols-3 gap-[0.2vw]">
           {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
+          
+          {datas.filter((val) => {
+            return val.title.includes(searchTerm)
+          })
+          .map((post) => { 
+            return (
+              <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]" key={post.id}>
+                {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
 
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
+                <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
+                  {/*<span>Photo ici</span>*/}
+                  {post.product_picture}
+                </div>
 
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
+                {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
 
-            {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
+                <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600" key={post.id}>
+                  {/*<span>Titre ici</span>*/}
+                  {post.title}
+                </div>
+                {/* ------------------------------------------------------------------------------------------ DIV BOUTON VOIR L'ANNONCE */}
 
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            {/* ------------------------------------------------------------------------------------------ DIV BOUTON VOIR L'ANNONCE */}
+                <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600" key={post.id}>
+                  <button>
+                    <Link to="produit/:id">Voir l'annonce</Link>
+                  </button>
+                </div>
+              </div>
+            )
+          })}
 
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
+
+          
 
           {/* -------------------------------------------- J'AI MIS PLUSIEURS FOIS LA MEME CHOSE QUE JUSTE AU DESSUS  */}
           {/* -------------------------------------------- POUR MONTRER LE RESULTAT MAIS IL FAUDRA */}
           {/* -------------------------------------------- MAPPER RESULTAT ET AFFICHER DANS LA DIV PRESENTE AU DESSUS OU ALORS SIMPLEMENT AFFICHER LE COMPONENT "ANNONCES" */}
           {/* -------------------------------------------- AU FINAL IL Y AURA UNE DIV, CE QU'IL Y A EN DESSOUS DE CE COMMENTAIRE EST DONC INUTILE (JUSTE POUR L'EXEMPLE)  */}
-
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 
