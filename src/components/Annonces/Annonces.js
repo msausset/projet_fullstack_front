@@ -9,7 +9,7 @@ const Annonces = () => {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3333/search?key=&category=OTHER_FURNITURE")
+    fetch("http://127.0.0.1:3333/search?key=&category=")
     .then((response) => response.json())
     .then((json) => setDatas(json));
   }, []);

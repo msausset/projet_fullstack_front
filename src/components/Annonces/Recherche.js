@@ -1,23 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {request} from "../../utils/Request";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
 const Recherche = () => {
   const [datas, setDatas] = useState([]);
-  const [searchTerm, setSearchTerm] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+
+
 
   const handleSearchTerm = (e) => {
     let value = e.target.value;
     setSearchTerm(value);
-    fetch("http://127.0.0.1:3333/search?key=&category=OTHER_FURNITURE")
-    .then((response) => response.json())
-    .then((json) => setDatas(json));
+ 
+    request.get("/search?key=" + searchTerm + "&category=")
+    .then(response => setDatas(response.data))
+    
   };
+
+  const handleSearchByTermAndCat = (e) => {
+    e.preventDefault();
+    request.get("/search?key=" + searchTerm + "&category=" + searchCategory)
+    .then(response => setDatas(response.data))
+    console.log(searchTerm, searchCategory)
+  }
 
   useEffect(() => {
     setDatas([])
+    try {
+      request.get('/offers-categories/').then(res => setCategories(res.data))
+    } catch(err) {
+        console.log(err.message)
+      }
   }, [searchTerm]);
+
+   /**
+     * Mise en forme des différentes catégories pour le <select>
+     * @returns Une option pour chaque catégorie
+     */
+    const getCategoryOptions = () => {
+      return categories.map(cat => {
+          return(
+              <option key={cat.machine_name} value={cat.machine_name}>{cat.label}</option>
+          )
+      })
+  }
 
   return (
     <div>
@@ -72,15 +102,15 @@ const Recherche = () => {
             <select
               className="w-[7vw] py-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               name="categorie"
-              id="categorie"
+              id="categorie" 
+              value={searchCategory}
+              onChange={e => setSearchCategory(e.target.value)}
             >
               {/* ------------------------------------------------------------------------------------------ REMPLACER LES EXEMPLES PAR LES CATEGORIES DANS LA BDD */}
               {/* ------------------------------------------------------------------------------------------ MAPPER CATEGORIE BDD ET AFFICHER OPTION  */}
 
-              <option value="exemple">Exemple</option>
-              <option value="voiture">Voitures</option>
-              <option value="chaussure">Chaussures</option>
-              <option value="pantalon">Pantalons</option>
+            {getCategoryOptions()}
+            
             </select>
           </div>
 
@@ -89,7 +119,7 @@ const Recherche = () => {
         {/* ------------------------------------------------------------------------------------------ BOUTON RECHERCHER */}
 
         <div className="text-center mt-[3vw]">
-          <button className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline">
+          <button onClick={handleSearchByTermAndCat} className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline">
             Rechercher
           </button>
         </div>
