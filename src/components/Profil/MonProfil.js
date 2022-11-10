@@ -18,7 +18,7 @@ const MonProfil = () => {
 
   useEffect(() => {
     request.get("user/me").then((response) => {
-      console.log(response.data);
+      //console.log(response.data);
 
       setNom(response.data.lastname);
       setPrenom(response.data.firstname);
@@ -31,7 +31,7 @@ const MonProfil = () => {
 
       setId(response.data.id);
     });
-  });
+  }, [isClicked]);
 
   // FONCTION PERMETTANT DE CHANGER LE BOUTON ET LES CLASSES DES SPANS ET INPUTS
 
@@ -43,7 +43,9 @@ const MonProfil = () => {
   // FONCTION DE SOUMISSION DE FORMULAIRE
 
   const handleClickAgain = (e) => {
-    e.preventDefault();
+    /*  e.preventDefault(); */
+
+    console.log(prenom);
 
     var bodyFormData = new FormData();
 
@@ -59,8 +61,9 @@ const MonProfil = () => {
     request
       .put("/user/" + id, bodyFormData)
       .then((response) => {
-        console.log("update response", response);
-        alert("modification validé");
+        //console.log("update response", response);
+        /* alert("modification validé"); */
+        /* window.location.reload(); */
       })
       .catch((err) => {
         console.log(err);
