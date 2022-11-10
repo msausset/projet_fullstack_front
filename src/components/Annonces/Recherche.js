@@ -1,8 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {request} from "../../utils/Request";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
 const Recherche = () => {
+  const [datas, setDatas] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+
+
+
+  const handleSearchTerm = (e) => {
+    let value = e.target.value;
+    setSearchTerm(value);
+ 
+    request.get("/search?key=" + searchTerm + "&category=")
+    .then(response => setDatas(response.data))
+    
+  };
+
+  const handleSearchByTermAndCat = (e) => {
+    e.preventDefault();
+    request.get("/search?key=" + searchTerm + "&category=" + searchCategory)
+    .then(response => setDatas(response.data))
+    console.log(searchTerm, searchCategory)
+  }
+
+  useEffect(() => {
+    setDatas([])
+    try {
+      request.get('/offers-categories/').then(res => setCategories(res.data))
+    } catch(err) {
+        console.log(err.message)
+      }
+  }, [searchTerm]);
+
+   /**
+     * Mise en forme des différentes catégories pour le <select>
+     * @returns Une option pour chaque catégorie
+     */
+    const getCategoryOptions = () => {
+      return categories.map(cat => {
+          return(
+              <option key={cat.machine_name} value={cat.machine_name}>{cat.label}</option>
+          )
+      })
+  }
+
   return (
     <div>
       {/* ------------------------------------------------------------------------------------------ DIV HAUTEUR ECRAN OPACITE 95 */}
@@ -45,33 +91,35 @@ const Recherche = () => {
 
             <input
               type="text"
-              placeholder="Commencer une recherche ..."
-              className="w-full py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              placeholder="Rechercher ..."
+              className="w-full disabled py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              onChange={handleSearchTerm}
             />
           </div>
           <div>
             {/* ------------------------------------------------------------------------------------------ SELECT RECHERCHE PAR CATEGORIE */}
 
             <select
-              className="w-[7vw] py-[0.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              className="w-[7vw] py-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               name="categorie"
-              id="categorie"
+              id="categorie" 
+              value={searchCategory}
+              onChange={e => setSearchCategory(e.target.value)}
             >
               {/* ------------------------------------------------------------------------------------------ REMPLACER LES EXEMPLES PAR LES CATEGORIES DANS LA BDD */}
               {/* ------------------------------------------------------------------------------------------ MAPPER CATEGORIE BDD ET AFFICHER OPTION  */}
 
-              <option value="exemple">Exemple</option>
-              <option value="voiture">Voitures</option>
-              <option value="chaussure">Chaussures</option>
-              <option value="pantalon">Pantalons</option>
+            {getCategoryOptions()}
+            
             </select>
           </div>
+
         </div>
 
         {/* ------------------------------------------------------------------------------------------ BOUTON RECHERCHER */}
 
         <div className="text-center mt-[3vw]">
-          <button className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline">
+          <button onClick={handleSearchByTermAndCat} className="h-[4vw] w-[10vw] rounded-full bg-green-400 hover:opacity-90 hover:underline">
             Rechercher
           </button>
         </div>
@@ -79,77 +127,42 @@ const Recherche = () => {
         {/* ------------------------------------------------------------------------------------------ GRILLE SUR 3 COLONNES */}
         {/* ------------------------------------------------------------------------------------------ AFFICHERA 3 RESULTATS PAR LIGNES */}
 
+        {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
         <div className="mr-[2vw] ml-[2vw] mt-[1.5vw] grid grid-cols-3 gap-[0.2vw]">
-          {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
+          {handleSearchTerm
+            ? datas &&
+              datas
+                .filter((val) => {
+                  return val.title.includes(searchTerm);
+                })
+                .map((post) => {
+                  return (
+                    <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]" key={post.id}>
+                      <div
+                        className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
+                        {post.product_picture}
+                      </div>
 
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
+                      <div
+                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
+                        {post.title}
+                      </div>
 
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-
-            {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
-
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            {/* ------------------------------------------------------------------------------------------ DIV BOUTON VOIR L'ANNONCE */}
-
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
-
-          {/* -------------------------------------------- J'AI MIS PLUSIEURS FOIS LA MEME CHOSE QUE JUSTE AU DESSUS  */}
-          {/* -------------------------------------------- POUR MONTRER LE RESULTAT MAIS IL FAUDRA */}
-          {/* -------------------------------------------- MAPPER RESULTAT ET AFFICHER DANS LA DIV PRESENTE AU DESSUS OU ALORS SIMPLEMENT AFFICHER LE COMPONENT "ANNONCES" */}
-          {/* -------------------------------------------- AU FINAL IL Y AURA UNE DIV, CE QU'IL Y A EN DESSOUS DE CE COMMENTAIRE EST DONC INUTILE (JUSTE POUR L'EXEMPLE)  */}
-
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
-          <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-            <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600">
-              <span>Photo ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600">
-              <span>Titre ici</span>
-            </div>
-            <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
-              <button>
-                <Link to="produit/:id">Bouton "Voir l'annonce"</Link>
-              </button>
-            </div>
-          </div>
+                      <div
+                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600">
+                        <button>
+                          <Link to={"produit/:id" + post.id}>
+                            Voir l'annonce
+                          </Link>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+            : "Pas de résultat"}
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
 

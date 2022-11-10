@@ -10,4 +10,3 @@ export const request = axios.create({
     Authorization: `Bearer ${getToken()}`,
   },
 });
-
