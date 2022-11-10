@@ -4,20 +4,20 @@ import { useState, useEffect } from "react";
 import monkeyRecherche from "../../images/monkey-recherche.gif";
 
 const Recherche = () => {
-
   const [datas, setDatas] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:3333/search?key=&category=OTHER_FURNITURE")
-    .then((response) => response.json())
-    .then((json) => setDatas(json));
-  }, []);
 
   const handleSearchTerm = (e) => {
     let value = e.target.value;
     setSearchTerm(value);
-  }
+    fetch("http://127.0.0.1:3333/search?key=&category=OTHER_FURNITURE")
+    .then((response) => response.json())
+    .then((json) => setDatas(json));
+  };
+
+  useEffect(() => {
+    setDatas([])
+  }, [searchTerm]);
 
   return (
     <div>
@@ -62,7 +62,7 @@ const Recherche = () => {
             <input
               type="text"
               placeholder="Rechercher ..."
-              className="w-full py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              className="w-full disabled py-[0.5vw] pl-[2.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               onChange={handleSearchTerm}
             />
           </div>
@@ -70,7 +70,7 @@ const Recherche = () => {
             {/* ------------------------------------------------------------------------------------------ SELECT RECHERCHE PAR CATEGORIE */}
 
             <select
-              className="w-[7vw] py-[0.5vw] pr-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
+              className="w-[7vw] py-[0.5vw] text-gray-500 border rounded-full outline-none bg-gray-200 focus:bg-white focus:border-indigo-600"
               name="categorie"
               id="categorie"
             >
@@ -83,6 +83,7 @@ const Recherche = () => {
               <option value="pantalon">Pantalons</option>
             </select>
           </div>
+
         </div>
 
         {/* ------------------------------------------------------------------------------------------ BOUTON RECHERCHER */}
@@ -96,41 +97,42 @@ const Recherche = () => {
         {/* ------------------------------------------------------------------------------------------ GRILLE SUR 3 COLONNES */}
         {/* ------------------------------------------------------------------------------------------ AFFICHERA 3 RESULTATS PAR LIGNES */}
 
+        {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
         <div className="mr-[2vw] ml-[2vw] mt-[1.5vw] grid grid-cols-3 gap-[0.2vw]">
-          {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
+          {handleSearchTerm
+            ? datas &&
+              datas
+                .filter((val) => {
+                  return val.title.includes(searchTerm);
+                })
+                .map((post) => {
+                  return (
+                    <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]" key={post.id}>
+                      <div
+                        className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600"
+                      >
+                        {post.product_picture}
+                      </div>
 
+                      <div
+                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600"
+                      >
+                        {post.title}
+                      </div>
 
-            {datas
-            .filter((val) => {
-              return val.title.includes(searchTerm);
-            })
-            .map((post) => {
-              return (
-
-                <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-                
-
-                  <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600" key={post.id}>
-                    {post.product_picture}
-                  </div>
-
-
-                  <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600" key={post.id}>
-                    {post.title}
-                  </div>
-
-
-                  <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600" key={post.id}>
-                    <button>
-                      <Link to={"produit/:id" + post.id}>Voir l'annonce</Link>
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          
-
-
+                      <div
+                        className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600"
+                      >
+                        <button>
+                          <Link to={"produit/:id" + post.id}>
+                            Voir l'annonce
+                          </Link>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })
+            : "Pas de résultat"}
         </div>
       </div>
     </div>
