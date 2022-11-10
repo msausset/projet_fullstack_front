@@ -11,57 +11,56 @@ import Deconnexion from "./components/User/Deconnexion";
 import Recherche from "./components/Annonces/Recherche";
 import Produit from "./components/Annonces/Produit";
 import Annonces from "./components/Annonces/Annonces";
-import EditionCreationAnnonce from "./components/Annonces/EditionCreationAnnonce";
-import ListeAnnonces from "./components/Annonces/ListeAnnonces";
+import AddAnnonce from "./components/Annonces/AddAnnonce";
+import EditAnnonce from "./components/Annonces/EditAnnonce";
+import MesAnnonces from "./components/Annonces/MesAnnonces";
 import MonProfil from "./components/Profil/MonProfil";
 import ProfilPublic from "./components/Profil/ProfilPublic";
-
+import { setAuthToken } from "./utils/setAuthToken";
 
 function App() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    setAuthToken(token);
+  }
+
   return (
     <div>
       <BrowserRouter>
-      
-        {/* ------------------------------------------------------------------------------- COMPONENTS > NAVBAR > NAVBAR */}
         <Navbar />
         <Routes>
-          {/* ------------------------------------------------------------------------------- PAGES > ACCUEIL */}
-          <Route path="/" element={<Accueil />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > CONNEXION */}
-          <Route path="/connexion" element={<Connexion />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > INSCRIPTION */}
-          <Route path="/inscription" element={<Inscription />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > REINITIALISATIONMDP */}
-          <Route
-            path="/reinitialisation-mdp"
-            element={<ReinitialisationMdp />}
-          />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > USER > REINITIALISATIONMDPMAIL */}
-          <Route
-            path="/reinitialisation-mdp-mail"
-            element={<ReinitialisationMdpMail />}
-          />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > RECHERCHE */}
-          <Route path="/recherche" element={<Recherche />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > ANNONCES */}
-          <Route path="/annonces" element={<Annonces />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > PRODUIT */}
-          <Route path="/produit/:id" element={<Produit />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > EDITIONCREATIONANNONCE */}
-          <Route
-            path="/edition-creation-annonce"
-            element={<EditionCreationAnnonce />}
-          />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > LISTEANNONCES */}
-          <Route path="/liste-annonces" element={<ListeAnnonces />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > MONPROFIL */}
-          <Route path="/mon-profil" element={<MonProfil />} />
-          {/* ------------------------------------------------------------------------------- COMPONENTS > ANNONCES > PROFILPUBLIC */}
-          <Route path="/profil-public/:id" element={<ProfilPublic />} />
-          <Route path="/deconnexion" element={<Deconnexion />} />
+          <Route path='/'>
+            <Route index element={<Accueil />} />
+
+            <Route path='inscription' element={<Inscription />} />
+
+            <Route path='connexion' element={<Connexion />} />
+
+            <Route path='deconnexion' element={<Deconnexion />} />
+
+            <Route path='mot-de-passe'>
+              <Route index element={<ReinitialisationMdp />} />
+              <Route path='formulaire-de-reinitialisation' element={<ReinitialisationMdpMail />} />
+            </Route>
+
+            <Route path='users'>
+              <Route path='u/:id' element={<ProfilPublic />} />
+            </Route>
+
+            <Route path='mon-profil'>
+              <Route index element={<MonProfil />} />
+              <Route path='mes-annonces' element={<MesAnnonces />} />
+              <Route path='creer-une-annonce' element={<AddAnnonce />} />
+              <Route path='modifier-une-annonce/:id' element={<EditAnnonce />} />
+            </Route>
+
+            <Route path='annonces'>
+              <Route index element={<Annonces />} />
+              <Route path='a/:id' element={<Produit />} />
+            </Route>
+          </Route>
         </Routes>
         <Footer />
-        
       </BrowserRouter>
     </div>
   );

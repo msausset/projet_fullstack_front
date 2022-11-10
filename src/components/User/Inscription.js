@@ -1,13 +1,61 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import monkeyInscription from "../../images/monkey-inscription.gif";
+import axios from "axios";
 
 const Inscription = () => {
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = (e) => {
+  const [prenom, setPrenom] = useState("");
+  const [nom, setNom] = useState("");
+  const [email, setEmail] = useState("");
+  const [tel, setTel] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [cp, setCp] = useState("");
+  const [ville, setVille] = useState("");
+  const [pays, setPays] = useState("");
+  const [mdp, setMdp] = useState("");
+  const [photoProfil, setPhotoProfil] = useState("");
+  const [photoId, setPhotoId] = useState("");
+
+  const changeHandler = (event) => {
+    setPhotoProfil(event.target.files[0]);
+    setPhotoId(event.target.files[0]);
+  };
+
+  const handleClick = async (e) => {
     e.preventDefault();
-    setIsClicked(true)
-    alert("OK !");
+
+    console.log(prenom, nom, email, tel, adresse, cp, ville, pays, mdp);
+
+    var bodyFormData = new FormData();
+
+    bodyFormData.append("firstname", prenom);
+    bodyFormData.append("lastname", nom);
+    bodyFormData.append("email", email);
+    bodyFormData.append("phone", tel);
+    bodyFormData.append("address", adresse);
+    bodyFormData.append("zip_code", cp);
+    bodyFormData.append("city", ville);
+    bodyFormData.append("country", pays);
+    bodyFormData.append("password", mdp);
+    bodyFormData.append("identifical_file", photoProfil);
+    bodyFormData.append("profile_picture", photoId);
+
+    axios
+      .post("http://127.0.0.1:3333/registration", bodyFormData)
+      .then((response) => {
+        setIsClicked(true);
+        alert("inscription validé !");
+
+        //redirect user to home page
+        const timer = setTimeout(() => {
+          window.location.href = "/connexion";
+        }, 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("erreur d'inscription");
+      });
   };
 
   return (
@@ -44,6 +92,7 @@ const Inscription = () => {
                   type="text"
                   id="prenom"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setPrenom(e.target.value)}
                   required
                 />
               </div>
@@ -60,6 +109,7 @@ const Inscription = () => {
                   type="text"
                   id="nom"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setNom(e.target.value)}
                   required
                 />
               </div>
@@ -76,6 +126,7 @@ const Inscription = () => {
                   type="email"
                   id="email"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -92,6 +143,7 @@ const Inscription = () => {
                   type="text"
                   id="tel"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setTel(e.target.value)}
                   required
                 />
               </div>
@@ -108,6 +160,7 @@ const Inscription = () => {
                   type="text"
                   id="adresse"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setAdresse(e.target.value)}
                   required
                 />
               </div>
@@ -124,6 +177,7 @@ const Inscription = () => {
                   type="text"
                   id="cp"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setCp(e.target.value)}
                   required
                 />
               </div>
@@ -140,6 +194,7 @@ const Inscription = () => {
                   type="text"
                   id="ville"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setVille(e.target.value)}
                   required
                 />
               </div>
@@ -156,6 +211,7 @@ const Inscription = () => {
                   type="text"
                   id="pays"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setPays(e.target.value)}
                   required
                 />
               </div>
@@ -172,22 +228,8 @@ const Inscription = () => {
                   type="password"
                   id="mdp"
                   className="rounded-full w-[13vw]"
+                  onChange={(e) => setMdp(e.target.value)}
                   required
-                />
-              </div>
-            </div>
-
-            {/* ------------------------------------------------------------------------------------------------------ INPUT CONFIMATION MOT DE PASSE MARGE BOTTOM 10 */}
-
-            <div className="mb-[1.5vw]">
-              <div>
-                <label htmlFor="confirmerMdp">Confirmer mot de passe</label>
-              </div>
-              <div>
-                <input
-                  type="password"
-                  id="confirmerMdp"
-                  className="rounded-full w-[13vw] required"
                 />
               </div>
             </div>
@@ -210,10 +252,12 @@ const Inscription = () => {
               </div>
               <div>
                 <input
+                  
                   type="file"
                   id="photoProfil"
                   accept=".pdf, .png, .jpg"
                   className="hidden"
+                  onChange={changeHandler}
                 />
               </div>
             </div>
@@ -236,10 +280,12 @@ const Inscription = () => {
               </div>
               <div>
                 <input
+                  
                   type="file"
                   id="photoId"
                   accept=".pdf, .png, .jpg"
                   className="hidden"
+                  onChange={changeHandler}
                 />
               </div>
             </div>
@@ -255,10 +301,12 @@ const Inscription = () => {
             </div>
           </div>
         </form>
-        <div className={isClicked ? "mt-[1vw] bg-green-400" : "mt-[1vw] bg-green-400 hidden"}>
-          <p className="text-center">
-            Votre compte a bien été créé.
-          </p>
+        <div
+          className={
+            isClicked ? "mt-[1vw] bg-green-400" : "mt-[1vw] bg-green-400 hidden"
+          }
+        >
+          <p className="text-center">Votre compte a bien été créé.</p>
         </div>
       </div>
     </div>

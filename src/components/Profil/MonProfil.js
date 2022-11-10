@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import monkeyMonProfil from "../../images/monkey-mon-profil.gif";
 import { Link } from "react-router-dom";
+import { request } from "../../utils/Request";
 
 const MonProfil = () => {
-  const [nom, setNom] = useState("NOM ICI");
-  const [prenom, setPrenom] = useState("PRÉNOM ICI");
-  const [mail, setMail] = useState("MAIL ICI");
-  const [telephone, setTelephone] = useState("TÉLÉPHONE ICI");
-  const [adresse, setAdresse] = useState("ADRESSE ICI");
-  const [ville, setVille] = useState("VILLE ICI");
-  const [codePostal, setCodepostal] = useState("CODE POSTAL ICI");
-  const [pays, setPays] = useState("PAYS ICI");
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [mail, setMail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [ville, setVille] = useState("");
+  const [codePostal, setCodepostal] = useState("");
+  const [pays, setPays] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    request.get("user/me").then((response) => {
+      console.log(response.data);
+
+      setNom(response.data.lastname);
+      setPrenom(response.data.firstname);
+      setMail(response.data.email);
+      setTelephone(response.data.phone);
+      setAdresse(response.data.address);
+      setVille(response.data.city);
+      setCodepostal(response.data.zip_code);
+      setPays(response.data.country);
+
+      setId(response.data.id);
+    });
+  }, [isClicked]);
 
   // FONCTION PERMETTANT DE CHANGER LE BOUTON ET LES CLASSES DES SPANS ET INPUTS
 
@@ -23,8 +43,32 @@ const MonProfil = () => {
   // FONCTION DE SOUMISSION DE FORMULAIRE
 
   const handleClickAgain = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+
+    var bodyFormData = new FormData();
+
+    bodyFormData.append("firstname", prenom);
+    bodyFormData.append("lastname", nom);
+    bodyFormData.append("email", mail);
+    bodyFormData.append("phone", telephone);
+    bodyFormData.append("address", adresse);
+    bodyFormData.append("zip_code", codePostal);
+    bodyFormData.append("city", ville);
+    bodyFormData.append("country", pays);
+
+    request
+      .put("/user/" + id, bodyFormData)
+      .then((response) => {
+        console.log("update response", response);
+        // alert("modification validé");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("erreur de modification");
+      });
+
     setIsClicked(false);
+    console.log(prenom);
   };
 
   return (
@@ -32,13 +76,12 @@ const MonProfil = () => {
       {/* ---------------------------------------------------------------------------------------------------------- DIV   */}
 
       <div className="w-[40vw] m-auto h-[15vw] mb-[30vw]">
-
         {/* ---------------------------------------------------------------------------------------------------------- DIV INFORMATIONS UTILISATEUR */}
 
         <div className="w-full bg-white pb-[1.5vw] min-h-[20vw] m-auto text-center pt-[1.5vw] opacity-95">
           <div className="mb-10">
             <button className="border-solid border-[0.15vw] h-[4vw] text-[1.2vw] font-bold w-[15vw] rounded-full bg-teal-500 hover:opacity-90 hover:underline">
-              <Link to="/liste-annonces">Voir mes annonces</Link>
+              <Link to="mes-annonces">Voir mes annonces</Link>
             </button>
           </div>
           <form action="" onSubmit={handleClickAgain}>
@@ -93,7 +136,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setNom(e.target.value)}
-                  placeholder={nom}
+                  defaultValue={nom}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {nom}
@@ -117,7 +160,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setPrenom(e.target.value)}
-                  placeholder={prenom}
+                  defaultValue={prenom}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {prenom}
@@ -147,7 +190,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setMail(e.target.value)}
-                  placeholder={mail}
+                  defaultValue={mail}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {mail}
@@ -171,7 +214,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setTelephone(e.target.value)}
-                  placeholder={telephone}
+                  defaultValue={telephone}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {telephone}
@@ -195,7 +238,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setAdresse(e.target.value)}
-                  placeholder={adresse}
+                  defaultValue={adresse}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {adresse}
@@ -219,7 +262,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setCodepostal(e.target.value)}
-                  placeholder={codePostal}
+                  defaultValue={codePostal}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {codePostal}
@@ -243,7 +286,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setVille(e.target.value)}
-                  placeholder={ville}
+                  defaultValue={ville}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {ville}
@@ -267,7 +310,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setPays(e.target.value)}
-                  placeholder={pays}
+                  defaultValue={pays}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {pays}
