@@ -100,34 +100,36 @@ const Recherche = () => {
           {/* ------------------------------------------------------------------------------------------ DIV GLOBALE RESULTAT */}
 
 
-            {datas
-            .filter((val) => {
-              return val.title.includes(searchTerm);
-            })
-            .map((post) => {
-              return (
+              {datas
+              .filter((val) => {
+                return val.title.includes(searchTerm);
+              })
+              .map((post) => {
+                return (
 
-                <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
-                
+                  <div className="mb-[1.5vw] border border-black border-[0.15vw] rounded-[0.5vw]">
+                  
 
-                  <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600" key={post.id}>
-                    {post.product_picture}
+                    <div className="h-[10vw] m-[0.15vw] border border-black border-[0.15vw] text-center bg-red-600" key={post.id}>
+                      {post.product_picture}
+                    </div>
+
+
+                    <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600" key={post.id}>
+                      {post.title}
+                    </div>
+
+
+                    <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600" key={post.id}>
+                      <button>
+                        <Link to={"produit/:id" + post.id}>Voir l'annonce</Link>
+                      </button>
+                    </div>
+
+                    
                   </div>
-
-
-                  <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-blue-600" key={post.id}>
-                    {post.title}
-                  </div>
-
-
-                  <div className="border border-black border-[0.15vw] m-[0.15vw] text-center bg-green-600" key={post.id}>
-                    <button>
-                      <Link to={"produit/:id" + post.id}>Voir l'annonce</Link>
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
           
 
 
