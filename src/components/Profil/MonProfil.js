@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import monkeyMonProfil from "../../images/monkey-mon-profil.gif";
 import { Link } from "react-router-dom";
+import request from "../../utils/Request";
 
 const MonProfil = () => {
-  const [nom, setNom] = useState("NOM ICI");
-  const [prenom, setPrenom] = useState("PRÉNOM ICI");
-  const [mail, setMail] = useState("MAIL ICI");
-  const [telephone, setTelephone] = useState("TÉLÉPHONE ICI");
-  const [adresse, setAdresse] = useState("ADRESSE ICI");
-  const [ville, setVille] = useState("VILLE ICI");
-  const [codePostal, setCodepostal] = useState("CODE POSTAL ICI");
-  const [pays, setPays] = useState("PAYS ICI");
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [mail, setMail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [ville, setVille] = useState("");
+  const [codePostal, setCodepostal] = useState("");
+  const [pays, setPays] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    request.get("user/me").then((response) => {
+      console.log(response.data);
+
+      setNom(response.data.lastname);
+      setPrenom(response.data.firstname);
+      setMail(response.data.email);
+      setTelephone(response.data.phone);
+      setAdresse(response.data.address);
+      setVille(response.data.city);
+      setCodepostal(response.data.zip_code);
+      setPays(response.data.country);
+    });
+  });
 
   // FONCTION PERMETTANT DE CHANGER LE BOUTON ET LES CLASSES DES SPANS ET INPUTS
 
@@ -32,7 +48,6 @@ const MonProfil = () => {
       {/* ---------------------------------------------------------------------------------------------------------- DIV   */}
 
       <div className="w-[40vw] m-auto h-[15vw] mb-[30vw]">
-
         {/* ---------------------------------------------------------------------------------------------------------- DIV INFORMATIONS UTILISATEUR */}
 
         <div className="w-full bg-white pb-[1.5vw] min-h-[20vw] m-auto text-center pt-[1.5vw] opacity-95">
@@ -93,7 +108,7 @@ const MonProfil = () => {
                       : "border border-[0.1vw] h-[1.5vw] rounded-full text-center focus:bg-slate-200 hidden"
                   }
                   onChange={(e) => setNom(e.target.value)}
-                  placeholder={nom}
+                  defaultValue={nom}
                 />
                 <span name="spanHidden" className={isClicked ? "hidden" : ""}>
                   {nom}
