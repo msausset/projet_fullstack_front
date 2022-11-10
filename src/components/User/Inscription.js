@@ -48,7 +48,9 @@ const Inscription = () => {
         alert("inscription validé !");
 
         //redirect user to home page
-        window.location.href = "/connexion";
+        const timer = setTimeout(() => {
+          window.location.href = "/connexion";
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
@@ -250,6 +252,7 @@ const Inscription = () => {
               </div>
               <div>
                 <input
+                  
                   type="file"
                   id="photoProfil"
                   accept=".pdf, .png, .jpg"
@@ -277,6 +280,7 @@ const Inscription = () => {
               </div>
               <div>
                 <input
+                  
                   type="file"
                   id="photoId"
                   accept=".pdf, .png, .jpg"

@@ -136,7 +136,6 @@ const Navbar = () => {
                 <p className="text-[1vw]">Connexion</p>
               </div>
             </div>
-          </div>
         </Link>
         )}
       </div>

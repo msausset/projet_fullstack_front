@@ -31,7 +31,7 @@ const MonProfil = () => {
 
       setId(response.data.id);
     });
-  });
+  }, [isClicked]);
 
   // FONCTION PERMETTANT DE CHANGER LE BOUTON ET LES CLASSES DES SPANS ET INPUTS
 
@@ -43,7 +43,7 @@ const MonProfil = () => {
   // FONCTION DE SOUMISSION DE FORMULAIRE
 
   const handleClickAgain = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     var bodyFormData = new FormData();
 
@@ -60,7 +60,7 @@ const MonProfil = () => {
       .put("/user/" + id, bodyFormData)
       .then((response) => {
         console.log("update response", response);
-        alert("modification validé");
+        // alert("modification validé");
       })
       .catch((err) => {
         console.log(err);
