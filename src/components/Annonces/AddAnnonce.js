@@ -10,7 +10,12 @@ export default function AddAnnonce() {
     // Traitement du formulaire
     function createAnnonce(annonce) {
         console.log(annonce)
-        request.post('/admin_offer/', annonce).then(response => {
+
+        request.post('/admin_offer/', annonce, {
+            headers: {
+                'Content-Type' : 'multipart/form-data'
+            }
+        }).then(response => {
             console.log('create response ', response)
             navigate('/mon-profil/mes-annonces')
         })

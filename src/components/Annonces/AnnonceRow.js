@@ -22,6 +22,19 @@ export default function AnnonceRow({ annonce, deleteAnnonce }) {
     }, [])
 
     /**
+     * Affichage de l'image du produit
+     * @param {string} file_name 
+     * @returns L'image du produit ou une image par défaut
+     */
+    const getProductPicture = file_name => {
+        if(file_name !== '' && file_name !== undefined && file_name !== null) {
+            return <img src={'http://localhost:3333/uploads/' + encodeURI(file_name)} alt='Produit' />
+        } else {
+            return <img src={image_not_found} alt='Produit' />
+        }
+    }
+
+    /**
      * Récupération du libellé de la catégorie
      * @param {string} machine_name 
      * @returns Le libellé de la catégorie ou 'Non renseignée'
@@ -34,11 +47,11 @@ export default function AnnonceRow({ annonce, deleteAnnonce }) {
 
     return(
         <tr>
-            <td><img src={image_not_found} alt={annonce.title} className="w-[100px] mx-auto" /></td>
+            <td>{ getProductPicture(annonce.product_picture) }</td>
             <td className="px-2 text-sm">{ getCategoryLabel(annonce.category) }</td>
             <td className="px-2 text-sm">{ annonce.title }</td>
             <td className="px-2 text-sm">{ annonce.description }</td>
-            <td className="px-2 text-sm">{ String(annonce.price) + '€' }</td>
+            <td className="px-2 text-sm">{ String(parseFloat(annonce.price).toFixed(2)) + '€' }</td>
             <td className="px-2 text-sm">{ annonce.status.label }</td>
             <td className="px-2 text-center">
                 <Link to={'/mon-profil/modifier-une-annonce/' + annonce.id}>

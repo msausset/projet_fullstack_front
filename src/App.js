@@ -20,6 +20,11 @@ import ProfilPublic from "./components/Profil/ProfilPublic";
 import { setAuthToken } from "./utils/setAuthToken";
 
 function App() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    setAuthToken(token);
+  }
+  
   return (
     <div>
       <BrowserRouter>

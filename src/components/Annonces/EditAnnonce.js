@@ -23,13 +23,17 @@ export default function EditAnnonce() {
 
         getAnnonce()
 
-    }, [])
+    }, [ id ])
 
     // Traitement du formulaire
     function updateAnnonce(annonce) {
         console.log(annonce)
-        request.put('/admin_offer/' + id, annonce).then(response => {
-            console.log('create response ', response)
+        request.put('/admin_offer/' + id, annonce, {
+            headers: {
+                'Content-Type' : 'multipart/form-data'
+            }
+        }).then(response => {
+            console.log('update response ', response)
             navigate('/mon-profil/mes-annonces')
         })
     }

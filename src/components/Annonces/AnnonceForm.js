@@ -11,9 +11,14 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
 
     const [ title, setTitle ] = useState('')
     const [ description, setDescription ] = useState('')
-    const [ price, setPrice ] = useState('')
+    const [ price, setPrice ] = useState()
     const [ category, setCategory ] = useState('')
     const [ statusId, setStatusId ] = useState(2)
+
+    // Récupère le fichier
+    const [ productPictureFile, setProductPictureFile ] = useState('')
+
+    // Récupère l'image du produit (retourne une balise <img>)
     const [ productPicture, setProductPicture ] = useState('')
 
     useEffect(() => {
@@ -24,17 +29,31 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
             console.log(err.message)
         }
         
-        if(annonce) {
+        // Si l'annonce a été passé en props,
+        // c'est-à-dire si le formulaire est un
+        // formulaire d'édition, on récupère
+        // toutes les informations de l'annonce.
+        if(Object.keys(annonce).length > 0) {
             setTitle(annonce.title)
             setDescription(annonce.description)
             setPrice(annonce.price)
             setCategory(annonce.category)
             setStatusId(annonce.status_id ?? 2)
-            setProductPicture(annonce.product_picture)
+
+            if(annonce.product_picture !== '' && annonce.product_picture !== undefined && annonce.product_picture !== null) {
+                setProductPictureFile(annonce.product_picture)
+                setProductPicture(<img src={'http://localhost:3333/uploads/' + encodeURI(annonce.product_picture)} alt='Produit' />)
+            } else {
+                setProductPicture(<img src={image_not_found} alt='Produit' />)
+            }
         }
 
     }, [ annonce ])
 
+    /**
+     * Mise en forme des différentes catégories pour le <select>
+     * @returns Une option pour chaque catégorie
+     */
     const getCategoryOptions = () => {
         return categories.map(cat => {
             return(
@@ -43,33 +62,40 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
         })
     }
 
+    /**
+     * Récupération puis envoie des données du formulaire dans un objet
+     * de type FormData.
+     * @param {*} e 
+     */
     const handleFormSubmit = (e) => {
         e.preventDefault()
+        
+        const bodyFormData = new FormData()
 
-        onFormSubmit({ 
-            'title': title,
-            'description': description,
-            'price': price,
-            'category': category,
-            'status_id': statusId,
-            'product_picture': productPicture
-        })
+        bodyFormData.append('title', title)
+        bodyFormData.append('description', description)
+        bodyFormData.append('price', parseFloat(price).toFixed(2))
+        bodyFormData.append('category', category)
+        bodyFormData.append('status_id', statusId)
+        bodyFormData.append('productPicture', productPictureFile)
+
+        onFormSubmit(bodyFormData)
     }
 
     return (
         <>
             <h1 className="text-[2em] font-bold text-center mb-10">{ action === 'Ajouter' ? 'Créer une nouvelle annonce' : 'Modifier une annonce' }</h1>
+
             <form onSubmit={handleFormSubmit} className='w-[50%] mx-auto'>
                 <div className="flex flex-col my-10">
-                    {
-                        productPicture ? <img src={productPicture} alt='Product picture' /> : <img src={image_not_found} alt='Image not found' className="w-[200px] mx-auto" />
-                    }
+                    { productPicture }
 
                     <input
                         type="file"
+                        id="productPicture"
                         className="mt-5 mx-auto"
                         required={true}
-                        onChange={e => setProductPicture(e.target.files[0])}
+                        onChange={e => setProductPictureFile(e.target.files[0])}
                     />
                 </div>
                 <div className="flex flex-col mb-5">
@@ -98,10 +124,11 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
                 <div className="flex flex-col mb-5">
                     <label htmlFor="price">Prix (€) <span className="font-bold text-red-600">*</span></label>
                     <input
-                        type="text"
+                        type="number"
                         id="price"
-                        placeholder="ex : 35,95"
+                        placeholder="ex : 35"
                         className="py-1"
+                        step="0.01"
                         required={true}
                         defaultValue={price}
                         onChange={e => setPrice(e.target.value)}
@@ -121,7 +148,7 @@ export default function AnnonceForm({ annonce = {}, action, onFormSubmit }) {
                 <div className="flex flex-col mb-12">
                     <label htmlFor="status_id">Statut de l'annonce <span className="font-bold text-red-600">*</span></label>
                     <select
-                        id="status_id"
+                        id="statusId"
                         required={true}
                         value={statusId}
                         onChange={e => setStatusId(e.target.value)}
