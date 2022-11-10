@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import monkeyAnnonces from "../../images/monkey-annonces.gif";
 import { request } from "../../utils/Request";
 
-//import mustang from "../../images/mustang-shelby-exemple.jpg";
-
 const Annonces = () => {
   const [datas, setDatas] = useState([]);
 
