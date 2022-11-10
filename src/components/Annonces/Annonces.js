@@ -36,6 +36,7 @@ const Annonces = () => {
 
           {datas.map((post) => {
             if (post.status_id === 2) {
+              const idProduit = post.id;
               return (
                 <div
                   className="mb-10 border border-black border-2 rounded-xl bg-slate-200"
@@ -64,7 +65,11 @@ const Annonces = () => {
 
                   <div className="m-1 text-center ">
                     <button className="my-2 h-[2vw] w-2/3 rounded-full bg-pink-400 hover:opacity-90 hover:underline">
-                      <Link to={"a/" + post.id}>Voir l'annonce</Link>
+                      <Link
+                        to={`a/${post.id}`}
+                      >
+                        Voir l'annonce
+                      </Link>
                     </button>
                   </div>
                 </div>

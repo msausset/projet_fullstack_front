@@ -1,9 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import monkeyProduit from "../../images/monkey-produit.gif";
 import mustang from "../../images/mustang-shelby-exemple.jpg";
+import image_not_found from '../../images/image-not-found.png';
+import { request } from "../../utils/Request";
 
 const Produit = () => {
+  
+  const { id } = useParams();
+  console.log(id);
+  
+  const [datas, setDatas] = useState([]);
+
+
+  useEffect(() => {
+
+      request.get("/offer/" + id).then((response) => setDatas(response.data));
+   
+   
+  }, []);
+
+
+      /**
+     * Affichage de l'image du produit
+     * @param {string} file_name 
+     * @returns L'image du produit ou une image par défaut
+     */
+       const getProductPicture = file_name => {
+        if(file_name !== '' && file_name !== undefined && file_name !== null) {
+            return <img className="w-full h-[30vw]" src={'http://localhost:3333/uploads/' + encodeURI(file_name)} alt='Produit' />
+        } else {
+            return <img className="w-full h-[30vw]" src={image_not_found} alt='Produit' />
+        }
+    }
+  
+  console.log(datas);
+  
   return (
     <div>
       <div className="w-[60vw] min-h-screen pb-[1vw] m-auto shadow-2xl bg-white opacity-95">
@@ -12,7 +46,7 @@ const Produit = () => {
             src={monkeyProduit}
             alt="monkeyProduit"
             className="w-[10vw] m-auto"
-          />
+            />
         </div>
         <div className="text-center text-[0.8vw] mt-[1vw]">
           <span className="">
@@ -25,23 +59,31 @@ const Produit = () => {
           {/* ------------------------------------------------------------------------------------------ DIV GLOBALE PRODUIT */}
 
           <div className="rounded-[0.3vw] mb-[1.5vw] border border-black border-[0.15vw] bg-slate-200">
-            {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
-
-            <div className="h-[30vw] m-[0.1vw] text-center">
-              <img src={mustang} className="w-full h-[30vw]" alt="mustang" />
+          
+              
+              {/* ------------------------------------------------------------------------------------------ DIV PHOTO */}
+              
+              <div className="h-[30vw] m-[0.1vw] text-center">
+              {/* <img src={datas.productPicture} className="w-full h-[30vw]" alt="mustang" /> */}
+              {getProductPicture(datas.productPicture)}
             </div>
 
-            {/* ------------------------------------------------------------------------------------------ DIV TITRE */}
+{/* ------------------------------------------------------------------------------------------ DIV TITRE */}
 
-            <div className="text-4xl h-[3vw] m-[0.1vw] text-center">
-              <span>Mustang Shelby GT500 - 1967</span>
+<div className="text-4xl h-[3vw] m-[0.1vw] text-center">
+              <span>
+                { datas.title}
+                {/* Mustang Shelby GT500 - 1967 */}
+
+              </span>
             </div>
 
-            {/* ------------------------------------------------------------------------------------------ DIV DESCRIPTION */}
+{/* ------------------------------------------------------------------------------------------ DIV DESCRIPTION */}
 
-            <div className="rounded-[0.5vw] w-[40vw] m-auto text-center bg-slate-300">
+<div className="rounded-[0.5vw] w-[40vw] m-auto text-center bg-slate-300">
               <p className="text-justify p-[1vw]">
-                Horum adventum praedocti speculationibus fidis rectores militum
+                { datas.description}
+                {/* Horum adventum praedocti speculationibus fidis rectores militum
                 tessera data sollemni armatos omnes celeri eduxere procursu et
                 agiliter praeterito Calycadni fluminis ponte, cuius undarum
                 magnitudo murorum adluit turres, in speciem locavere pugnandi.
@@ -65,30 +107,35 @@ const Produit = () => {
                 spiritus inrequietis motibus erigentes, hac tamen indignitate
                 perciti vehementer, ut iactitabant, quod eorum capiti quidam
                 consortes apud Iconium Pisidiae oppidum in amphitheatrali
-                spectaculo feris praedatricibus obiecti sunt praeter morem.
+                spectaculo feris praedatricibus obiecti sunt praeter morem. */}
               </p>
             </div>
 
-            {/* ------------------------------------------------------------------------------------------ DIV PRIX */}
+{/* ------------------------------------------------------------------------------------------ DIV PRIX */}
 
-            <div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
-              <span className="text-[2vw] bg-yellow-200">25.999€</span>
+<div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
+              <span className="text-[2vw] bg-yellow-200">
+                {/* 25.999€ */}
+                { datas.price}
+                </span>
             </div>
 
-            {/* ------------------------------------------------------------------------------------------ DIV NOM ANNONCEUR + LIEN */}
+{/* ------------------------------------------------------------------------------------------ DIV NOM ANNONCEUR + LIEN */}
 
-            <div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
+<div className=" w-[20vw] m-auto pt-[1.5vw] my-[1vw] text-center">
               <span>
-                Posté par :{" "}
+                Posté par :
                 <Link
                   to="/profil-public/:id"
                   className="hover:text-blue-900 hover:underline"
-                >
-                  Maxime Sausset
+                  >
+                  {Object.keys(datas).length > 0 && datas.Author.firstname+" "+ datas.Author.lastname}
                 </Link>
               </span>
             </div>
-          </div>
+
+
+</div>
         </div>
       </div>
     </div>
